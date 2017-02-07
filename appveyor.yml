@@ -1,0 +1,54 @@
+-
+  version: 0.0.0.{build}
+  configuration: Release
+
+  install:
+    - ps: Start-Process (Get-ChildItem -Path "${env:ProgramFiles(x86)}\Microsoft SDKs\Windows" -Filter sn.exe -Recurse | Select-Object -First 1).FullName -ArgumentList "-q -Vr *,ce35f76fcda82bad"
+
+  before_build:
+    - nuget restore
+
+  build:
+    project: votive.sln
+
+  skip_tags: true
+
+-
+  branches:
+    only:
+      - master
+
+  version: 0.0.0.{build}
+  configuration: Release
+
+  environment:
+    KeyPairDownloadToken:
+      secure: U5OkonXbnqz0MB5NLRcfxdPvz7bG9QWHRt8ZeldmeSpoqW6GmkAirTlIDU1OZAW8pWIyz6LrTeTVRntzVSRoXw6pwRYfYO+Zzl43RHd7UvmPEPKvrqiqlDBT9+TrFPmOdvm13FaX4ljs19K94ALL9w==
+
+  install:
+    - ps: $env:OFFICIAL_WIX_BUILD=$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath(".\wix4_keypair.snk")
+    - ps: Start-FileDownload -Url "https://wixdl.blob.core.windows.net/secure/keys/wix4_keypair.snk${env:KeyPairDownloadToken}" -FileName "${env:OFFICIAL_WIX_BUILD}"
+
+  before_build:
+    - nuget restore
+
+  build:
+    project: votive.sln
+
+  after_build:
+    - ps: Remove-Item "${env:OFFICIAL_WIX_BUILD}"
+
+  skip_tags: true
+
+  artifacts:
+    - path: build\Release\**\*.vsix
+
+  deploy:
+    provider: GitHub
+    tag:  v$(GitBuildVersion)
+    release: WiX Toolset Visual Studio Extensions v$(GitBuildVersion)
+    description: 'WiX Toolset Visual Studio Extensions (aka: Votive) release v$(GitBuildVersion)'
+    artifact: /.*\.vsix/
+    prerelease: true
+    auth_token:
+      secure: BuuXJ8z8dMoeeMPy4l7QbbNPFn1/CW9PRGZxMhH3IAFdtTftFKZHA7eqpBqiE2T3

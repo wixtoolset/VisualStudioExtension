@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Vsix Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
+  <Identifier Id="WixToolset.VisualStudioExtension.Dev12">
+    <Name>Wix Toolset Visual Studio 2013 Extension</Name>
+    <Author>.NET Foundation and contributors</Author>
+    <Version>|Votive2013;GetBuildVersion|</Version>
+    <Description>The most powerful set of tools available to create your Windows installation experience.</Description>
+    <Locale>1033</Locale>
+    <InstalledByMsi>false</InstalledByMsi>
+    <!--<Icon>wix.ico</Icon>-->
+    <SupportedProducts>
+      <VisualStudio Version="12.0">
+        <Edition>Pro</Edition>
+      </VisualStudio>
+    </SupportedProducts>
+    <SupportedFrameworkRuntimeEdition MinVersion="4.0" />
+  </Identifier>
+  <References />
+  <Content>
+    <VsPackage>|votive;PkgdefProjectOutputGroup|</VsPackage>
+    <Assembly AssemblyName="|votive;AssemblyName|">|Votive|</Assembly>
+    <ProjectTemplate>ProjectTemplates</ProjectTemplate>
+    <ItemTemplate>ItemTemplates</ItemTemplate>
+  </Content>
+</Vsix>
