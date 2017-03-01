@@ -27,6 +27,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="redirects\v3\wix.targets">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>MSBuild</InstallRoot>
+      <VSIXSubPath>Microsoft\WiX\v3.x\</VSIXSubPath>
+    </Content>
+    <Content Include="redirects\v4\wix.targets">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>MSBuild</InstallRoot>
+      <VSIXSubPath>WiX Toolset\v4\</VSIXSubPath>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\votive\votive.csproj">
       <Project>{24A98296-9D58-42C1-95C0-CC36736409E2}</Project>
       <Name>votive</Name>

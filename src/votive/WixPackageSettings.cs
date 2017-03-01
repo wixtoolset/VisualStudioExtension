@@ -223,9 +223,9 @@ namespace WixToolset.VisualStudioExtension
             {
                 using (RegistryKey regKey = Registry.LocalMachine.OpenSubKey(this.rootPath, false))
                 {
-                    object regValue = regKey.GetValue(this.name, this.defaultValue, RegistryValueOptions.None);
+                    object regValue = regKey?.GetValue(this.name, this.defaultValue, RegistryValueOptions.None);
                     this.initialized = true;
-                    this.settingValue = (T) regValue;
+                    this.settingValue = regValue == null ? default(T) : (T)regValue;
                 }
             }
 
