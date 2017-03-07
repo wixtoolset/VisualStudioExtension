@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" InitialTargets="EnsureWixToolsetInstalled" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<PropertyGroup>
 		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -21,7 +22,7 @@
 	<ItemGroup>
 		<Compile Include="Product.wxs" />
 	</ItemGroup>
-	<Import Project="$(WixTargetsPath)" Exists('$(WixTargetsPath)') " />
+	<Import Project="$(WixTargetsPath)" Condition=" Exists('$(WixTargetsPath)') " />
 	<Target Name="EnsureWixToolsetInstalled" Condition=" !Exists('$(WixTargetsPath)') ">
 		<Error Text="The WiX Toolset v4 build tools must be installed to build this project. To download the WiX Toolset v4, see http://wixtoolset.org/releases/" />
 	</Target>
