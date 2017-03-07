@@ -25,6 +25,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="..\common\WixLogo.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="..\common\WixLogoSmall.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\votive\votive.csproj">
       <Project>{24A98296-9D58-42C1-95C0-CC36736409E2}</Project>
       <Name>votive</Name>

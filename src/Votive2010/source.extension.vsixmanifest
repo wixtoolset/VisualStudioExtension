@@ -4,10 +4,12 @@
     <Name>Wix Toolset Visual Studio 2010 Extension</Name>
     <Author>.NET Foundation and contributors</Author>
     <Version>|Votive2010;GetBuildVersion|</Version>
-    <Description>The most powerful set of tools available to create your Windows installation experience.</Description>
     <Locale>1033</Locale>
     <InstalledByMsi>false</InstalledByMsi>
-    <!--<Icon>wix.ico</Icon>-->
+    <Description>Visual Studio integration for the WiX Toolset - the most powerful set of tools available to create your Windows installation experience.</Description>
+    <MoreInfoUrl>http://wixtoolset.org/</MoreInfoUrl>
+    <Icon>WixLogoSmall.png</Icon>
+    <PreviewImage>WixLogo.png</PreviewImage>
     <SupportedProducts>
       <VisualStudio Version="10.0">
         <Edition>Pro</Edition>

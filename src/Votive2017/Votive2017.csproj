@@ -27,6 +27,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="..\common\WixLogo.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="..\common\WixLogoSmall.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="redirects\v3\wix.targets">
       <IncludeInVSIX>true</IncludeInVSIX>
       <InstallRoot>MSBuild</InstallRoot>
