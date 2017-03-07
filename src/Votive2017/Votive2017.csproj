@@ -32,7 +32,17 @@
       <InstallRoot>MSBuild</InstallRoot>
       <VSIXSubPath>Microsoft\WiX\v3.x\</VSIXSubPath>
     </Content>
+    <Content Include="redirects\v3\wix.ca.targets">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>MSBuild</InstallRoot>
+      <VSIXSubPath>Microsoft\WiX\v3.x\</VSIXSubPath>
+    </Content>
     <Content Include="redirects\v4\wix.targets">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>MSBuild</InstallRoot>
+      <VSIXSubPath>WiX Toolset\v4\</VSIXSubPath>
+    </Content>
+    <Content Include="redirects\v4\wix.ca.targets">
       <IncludeInVSIX>true</IncludeInVSIX>
       <InstallRoot>MSBuild</InstallRoot>
       <VSIXSubPath>WiX Toolset\v4\</VSIXSubPath>
@@ -121,21 +131,17 @@
       <VSIXSubPath>.</VSIXSubPath>
     </Content>
     <Content Include="schemas\vs.xsd">
-
       <InstallRoot>Schemas</InstallRoot>
       <IncludeInVSIX>true</IncludeInVSIX>
       <VSIXSubPath>.</VSIXSubPath>
-
     </Content>
     <Content Include="schemas\wix.xsd">
       <VSIXSubPath>.</VSIXSubPath>
-
       <InstallRoot>Schemas</InstallRoot>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="schemas\wixloc.xsd">
       <VSIXSubPath>.</VSIXSubPath>
-
       <InstallRoot>Schemas</InstallRoot>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
