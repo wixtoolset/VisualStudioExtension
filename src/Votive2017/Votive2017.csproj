@@ -27,7 +27,23 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="..\common\WixLogo.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="..\common\WixLogoSmall.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="redirects\v3\wix.targets">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>MSBuild</InstallRoot>
+      <VSIXSubPath>Microsoft\WiX\v3.x\</VSIXSubPath>
+    </Content>
+    <Content Include="redirects\v3\wix.ca.targets">
       <IncludeInVSIX>true</IncludeInVSIX>
       <InstallRoot>MSBuild</InstallRoot>
       <VSIXSubPath>Microsoft\WiX\v3.x\</VSIXSubPath>
@@ -36,6 +52,211 @@
       <IncludeInVSIX>true</IncludeInVSIX>
       <InstallRoot>MSBuild</InstallRoot>
       <VSIXSubPath>WiX Toolset\v4\</VSIXSubPath>
+    </Content>
+    <Content Include="redirects\v4\wix.ca.targets">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>MSBuild</InstallRoot>
+      <VSIXSubPath>WiX Toolset\v4\</VSIXSubPath>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="schemas\bal.xsd">
+      <InstallRoot>Schemas</InstallRoot>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\complus.xsd">
+      <InstallRoot>Schemas</InstallRoot>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\dependency.xsd">
+      <InstallRoot>Schemas</InstallRoot>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\difxapp.xsd">
+      <InstallRoot>Schemas</InstallRoot>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\firewall.xsd">
+      <InstallRoot>Schemas</InstallRoot>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\gaming.xsd">
+      <InstallRoot>Schemas</InstallRoot>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\http.xsd">
+      <InstallRoot>Schemas</InstallRoot>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\iis.xsd">
+      <InstallRoot>Schemas</InstallRoot>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\lux.xsd">
+      <InstallRoot>Schemas</InstallRoot>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\msmq.xsd">
+      <InstallRoot>Schemas</InstallRoot>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\netfx.xsd">
+      <InstallRoot>Schemas</InstallRoot>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\ps.xsd">
+      <InstallRoot>Schemas</InstallRoot>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\sql.xsd">
+      <InstallRoot>Schemas</InstallRoot>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\tag.xsd">
+      <InstallRoot>Schemas</InstallRoot>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\thmutil.xsd">
+      <InstallRoot>Schemas</InstallRoot>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\util.xsd">
+      <InstallRoot>Schemas</InstallRoot>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\vs.xsd">
+      <InstallRoot>Schemas</InstallRoot>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\wix.xsd">
+      <VSIXSubPath>.</VSIXSubPath>
+      <InstallRoot>Schemas</InstallRoot>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="schemas\wixloc.xsd">
+      <VSIXSubPath>.</VSIXSubPath>
+      <InstallRoot>Schemas</InstallRoot>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="schemas\bal4.xsd">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>Schemas</InstallRoot>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\cfg4.xsd">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>Schemas</InstallRoot>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\complus4.xsd">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>Schemas</InstallRoot>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\dependency4.xsd">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>Schemas</InstallRoot>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\difxapp4.xsd">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>Schemas</InstallRoot>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\firewall4.xsd">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>Schemas</InstallRoot>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\gaming4.xsd">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>Schemas</InstallRoot>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\http4.xsd">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>Schemas</InstallRoot>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\iis4.xsd">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>Schemas</InstallRoot>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\lux4.xsd">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>Schemas</InstallRoot>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\msmq4.xsd">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>Schemas</InstallRoot>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\netfx4.xsd">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>Schemas</InstallRoot>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\ps4.xsd">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>Schemas</InstallRoot>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\sql4.xsd">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>Schemas</InstallRoot>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\tag4.xsd">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>Schemas</InstallRoot>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\thmutil4.xsd">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>Schemas</InstallRoot>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\util4.xsd">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>Schemas</InstallRoot>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\vs4.xsd">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>Schemas</InstallRoot>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\wix4.xsd">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>Schemas</InstallRoot>
+      <VSIXSubPath>.</VSIXSubPath>
+    </Content>
+    <Content Include="schemas\wixloc4.xsd">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <InstallRoot>Schemas</InstallRoot>
+      <VSIXSubPath>.</VSIXSubPath>
     </Content>
   </ItemGroup>
 
