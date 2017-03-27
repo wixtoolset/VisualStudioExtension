@@ -25,13 +25,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="..\common\WixLogo.png">
+    <Content Include="WixLogoDev10.png">
       <IncludeInVSIX>true</IncludeInVSIX>
-      <VSIXSubPath>.</VSIXSubPath>
-    </Content>
-    <Content Include="..\common\WixLogoSmall.png">
-      <IncludeInVSIX>true</IncludeInVSIX>
-      <VSIXSubPath>.</VSIXSubPath>
     </Content>
   </ItemGroup>
 

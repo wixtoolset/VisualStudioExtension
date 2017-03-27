@@ -5,8 +5,8 @@
     <DisplayName>Wix Toolset Visual Studio 2017 Extension</DisplayName>
     <Description>Visual Studio integration for the WiX Toolset - the most powerful set of tools available to create your Windows installation experience.</Description>
     <MoreInfo>http://wixtoolset.org/</MoreInfo>
-    <Icon>WixLogoSmall.png</Icon>
-    <PreviewImage>WixLogo.png</PreviewImage>
+    <Icon>WixLogoDev15.png</Icon>
+    <PreviewImage>WixLogoDev15.png</PreviewImage>
   </Metadata>
   <Prerequisites>
     <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,16.0)" />

@@ -8,8 +8,8 @@
     <InstalledByMsi>false</InstalledByMsi>
     <Description>Visual Studio integration for the WiX Toolset - the most powerful set of tools available to create your Windows installation experience.</Description>
     <MoreInfoUrl>http://wixtoolset.org/</MoreInfoUrl>
-    <Icon>WixLogoSmall.png</Icon>
-    <PreviewImage>WixLogo.png</PreviewImage>
+    <Icon>WixLogoDev10.png</Icon>
+    <PreviewImage>WixLogoDev10.png</PreviewImage>
     <SupportedProducts>
       <VisualStudio Version="10.0">
         <Edition>Pro</Edition>
