@@ -20,7 +20,7 @@
     <WarningLevel>4</WarningLevel>
     <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
     <TargetFrameworkVersion Condition=" '$(TargetFrameworkVersion)'=='' ">v4.0</TargetFrameworkVersion>
-    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
     <NoWarn Condition=" '$(CopyBuildOutputToOutputDirectory)'=='false' ">$(NoWarn);2008</NoWarn>
   </PropertyGroup>
 
