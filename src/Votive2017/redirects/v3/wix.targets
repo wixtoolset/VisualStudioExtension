@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <Import Project="$(WixMSBuildFolder)wix.targets" Condition=" Exists('$(WixMSBuildFolder)wix.targets') " />
-  <Target Name="EnsureActualWixToolsetInstalled" Condition=" !Exists('$(WixMSBuildFolder)wix.targets') ">
-    <Error Text="The WiX Toolset v3 build tools must be installed to build this project. Could not find wix.targets at '$(WixMSBuildFolder)'. To download WiX Toolset v3, see http://wixtoolset.org/releases/" />
+  <Target Name="EnsureActualWixToolsetInstalled" Condition=" '$(WixTargetsImported)' != 'true' ">
+    <Error Text="The WiX Toolset v3.11 (or newer) build tools must be installed to build this project. Could not find wix.targets at '$(WixMSBuildFolder)'. To download WiX Toolset v3.11 (or newer), see http://wixtoolset.org/releases/" />
   </Target>
 </Project>

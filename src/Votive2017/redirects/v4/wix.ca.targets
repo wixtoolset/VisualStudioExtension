@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <Import Project="$(WixInstallFolder)sdk\wix.ca.targets" Condition=" Exists('$(WixInstallFolder)sdk\wix.ca.targets') " />
-  <Target Name="EnsureActualWixToolsetInstalled" Condition=" !Exists('$(WixInstallFolder)sdk\wix.ca.targets') ">
+  <Target Name="EnsureActualWixToolsetInstalled" Condition=" '$(WixCATargetsImported)' != 'true' ">
     <Error Text="The WiX Toolset v4 build tools must be installed to build this project. Could not find wix.ca.targets at '$(WixInstallFolder)sdk\'. To download WiX Toolset v4, see http://wixtoolset.org/releases/" />
   </Target>
 </Project>
