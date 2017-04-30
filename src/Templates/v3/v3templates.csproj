@@ -40,6 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <VSTemplate Include="Projects\CustomActionCPP\CustomActionCPP.vstemplate" />
     <VSTemplate Include="Projects\CustomActionCS\CustomActionCS.vstemplate" />
     <VSTemplate Include="Projects\CustomActionVB\CustomActionVB.vstemplate" />
   </ItemGroup>
