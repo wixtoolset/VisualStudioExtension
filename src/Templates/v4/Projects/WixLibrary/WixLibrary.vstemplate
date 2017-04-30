@@ -1,7 +1,7 @@
 <VSTemplate Version="2.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
   <TemplateData>
-    <Name _locID="TSDATA_DUT_Name">Setup Library Project</Name>
-    <Description _locID="TSDATA_DUT_Description">A project for creating a wixlib library</Description>
+    <Name _locID="TSDATA_DUT_Name">Setup Library Project for WiX v4</Name>
+    <Description _locID="TSDATA_DUT_Description">A project for creating a wixlib library using WiX Toolset v4</Description>
     <Icon>WixLibrary.ico</Icon>
     <ProjectType>WiX</ProjectType>
     <SortOrder>40</SortOrder>

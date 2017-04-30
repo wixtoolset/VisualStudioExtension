@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
   <TemplateData>
-    <Name _locID="TSDATA_DUT_Name">C++ Custom Action Project</Name>
-    <Description _locID="TSDATA_DUT_Description">A project for creating an MSI custom action</Description>
+    <Name _locID="TSDATA_DUT_Name">C++ Custom Action Project for WiX v3</Name>
+    <Description _locID="TSDATA_DUT_Description">A project for creating an MSI custom action using WiX Toolset v3</Description>
     <Icon>CustomActionCPP.ico</Icon>
     <ProjectType>WiX</ProjectType>
     <TemplateID>Microsoft.Deployment.WindowsInstaller.CustomActionCPP</TemplateID>
