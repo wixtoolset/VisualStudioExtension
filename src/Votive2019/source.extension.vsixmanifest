@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+  <Metadata>
+    <Identity Id="WixToolset.VisualStudioExtension.Dev16" Version="|Votive2019;GetBuildVersion|" Language="en-US" Publisher=".NET Foundation and contributors" />
+    <DisplayName>Wix Toolset Visual Studio 2019 Extension</DisplayName>
+    <Description>Visual Studio integration for the WiX Toolset - the most powerful set of tools available to create your Windows installation experience.</Description>
+    <MoreInfo>http://wixtoolset.org/</MoreInfo>
+    <Icon>WixLogoDev16.png</Icon>
+    <PreviewImage>WixLogoDev16.png</PreviewImage>
+  </Metadata>
+  <Prerequisites>
+    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[16.0,17.0)" />
+  </Prerequisites>
+  <Dependencies>
+    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.0,)" />
+  </Dependencies>
+  <Installation AllUsers="true">
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[16.0,17.0)" />
+  </Installation>
+  <Assets>
+    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="votive" Path="|votive;PkgdefProjectOutputGroup|" />
+    <Asset Type="Microsoft.VisualStudio.Assembly" d:Source="Project" d:ProjectName="votive" Path="|votive|" AssemblyName="|votive;AssemblyName|" />
+    <Asset Type="Microsoft.VisualStudio.ProjectTemplate" Path="ProjectTemplates" />
+    <Asset Type="Microsoft.VisualStudio.ItemTemplate" Path="ItemTemplates" />
+  </Assets>
+</PackageManifest>
