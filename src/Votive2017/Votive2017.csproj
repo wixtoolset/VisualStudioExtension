@@ -56,7 +56,7 @@
     <Content Include="redirects\v4\wix.nativeca.targets">
       <IncludeInVSIX>true</IncludeInVSIX>
       <InstallRoot>MSBuild</InstallRoot>
-      <VSIXSubPath>Microsoft\WiX\v3.x\</VSIXSubPath>
+      <VSIXSubPath>WiX Toolset\v4\</VSIXSubPath>
     </Content>
     <Content Include="redirects\v4\wix.targets">
       <IncludeInVSIX>true</IncludeInVSIX>
