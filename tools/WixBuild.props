@@ -280,9 +280,6 @@
     <StaticAnalysisEnabled Condition=" '$(StaticAnalysisEnabled)'=='' ">false</StaticAnalysisEnabled>
   </PropertyGroup>
 
-  <!-- Include the version handling. -->
-  <Import Project="WixBuild.Version.targets" />
-
   <!-- Import project type specific properties. -->
   <!--<Import Project="WixBuild$(MSBuildProjectExtension).props" Condition=" Exists('WixBuild$(MSBuildProjectExtension).props') " />-->
 

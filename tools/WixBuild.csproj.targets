@@ -4,9 +4,8 @@
   <Import Project="$(StyleCopTargetsPath)" Condition=" '$(StyleCopEnabled)' == 'true' " />
 
   <PropertyGroup>
-    <PrepareForBuildDependsOn>
-      $(PrepareForBuildDependsOn);
-      WriteCSharpVersionFile
-    </PrepareForBuildDependsOn>
+    <SignOutput Condition="'$(SignOutput)'=='' and '$(ShouldSignOutput)'=='true' and '$(PleaseSignOutput)'!=''">true</SignOutput>
   </PropertyGroup>
+
+  <Import Project="WixBuild.targets" />
 </Project>

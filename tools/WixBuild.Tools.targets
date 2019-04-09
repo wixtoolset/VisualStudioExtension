@@ -15,6 +15,9 @@
   <!-- Steal some tasks from the MSBuild tasks assembly -->
   <UsingTask TaskName="AssignTargetPath" AssemblyName="Microsoft.Build.Tasks, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
 
+  <!-- Ensure Signing targets are imported. -->
+  <Import Project="WixBuild.Signing.targets" Condition="'$(WixBuildSigningTargetsDefined)'!='true'" />
+
   <!--
   ================================================================================================
   Diagnostics
@@ -93,6 +96,16 @@
       Code="WIXBUILD004"
       Condition="!Exists('$(HelpCompiler)')"
       Text="$(HelpCompiler) does not exist. Please install the HTML Help Workshop that is part of the HTML Help SDK." />
+
+    <Error
+      Code="WIXBUILD05"
+      Condition=" '$(PleaseSignOutput)'!='' and !Exists('$(SignClientPath)') "
+      Text="Cannot locate SignClient. Ensure SignClient is present at &quot;$(SignClientPath)&quot;. If not, run the following command from the root of the project: msbuild -t:DotnetToolRestore" />
+
+    <Error
+      Code="WIXBUILD06"
+      Condition=" '$(PleaseSignOutput)'!='' and ('$(SignClientUser)'=='' or '$(SignClientSecret)'=='') "
+      Text="Signing is requested but one or both required properites SignClientUser and SignClientSecret were not specified on the command line or as environment variables." />
 
     <Error
       Code="WIXBUILD008"
@@ -254,16 +267,13 @@
   ================================================================================================
   -->
   <PropertyGroup>
-    <CompileNativeResourcesDependsOn>
-      WriteCppVersionFile
-    </CompileNativeResourcesDependsOn>
     <PrepareResourcesDependsOn>
       CompileNativeResources;
       $(PrepareResourcesDependsOn)
     </PrepareResourcesDependsOn>
     <ResFile>$(IntermediateOutputPath)$(TargetName).res</ResFile>
     <RcIncludeStandardPaths>true</RcIncludeStandardPaths>
-    <RcStandardPaths>$(WixVersionPath)\;$(WixRoot)src\common;$(PlatformSdkIncludePath);$(VCIncludePath)</RcStandardPaths>
+    <RcStandardPaths>;$(WixRoot)src\common;$(PlatformSdkIncludePath);$(VCIncludePath)</RcStandardPaths>
   </PropertyGroup>
 
   <Target

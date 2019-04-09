@@ -6,6 +6,7 @@
     <ProjectGuid>{0877C6F6-73D9-46F1-89AB-43B6EC05EB9F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AssemblyName>Votive2013</AssemblyName>
+    <ShouldSignOutput>true</ShouldSignOutput>
 
     <CopyBuildOutputToOutputDirectory>false</CopyBuildOutputToOutputDirectory>
     <CopyOutputSymbolsToOutputDirectory>false</CopyOutputSymbolsToOutputDirectory>
