@@ -6,25 +6,33 @@
     <ProjectGuid>{B97AB81C-BE5B-4757-B2CC-96D92EB84182}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AssemblyName>Votive2019</AssemblyName>
+    <ShouldSignOutput>true</ShouldSignOutput>
+
     <VsixType>v3</VsixType>
+
     <CopyBuildOutputToOutputDirectory>false</CopyBuildOutputToOutputDirectory>
     <CopyOutputSymbolsToOutputDirectory>false</CopyOutputSymbolsToOutputDirectory>
+
     <IncludeAssemblyInVSIXContainer>false</IncludeAssemblyInVSIXContainer>
     <GeneratePkgDefFile>false</GeneratePkgDefFile>
     <CopyVsixManifestToOutput>false</CopyVsixManifestToOutput>
     <DeployExtension>false</DeployExtension>
     <DeployVSTemplates>false</DeployVSTemplates>
   </PropertyGroup>
+
   <Import Project="..\..\tools\WixBuild.csproj.props" />
+
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="source.extension.vsixmanifest" />
   </ItemGroup>
+
   <ItemGroup>
     <Content Include="WixLogoDev16.png">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
   </ItemGroup>
+
   <ItemGroup>
     <Content Include="redirects\v3\wix.ca.targets">
       <IncludeInVSIX>true</IncludeInVSIX>
@@ -256,6 +264,7 @@
       <VSIXSubPath>.</VSIXSubPath>
     </Content>
   </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\votive\votive.csproj">
       <Project>{24A98296-9D58-42C1-95C0-CC36736409E2}</Project>
@@ -284,6 +293,7 @@
       </VSIXSourceItem>
     </ItemGroup>
   </Target>
+
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>

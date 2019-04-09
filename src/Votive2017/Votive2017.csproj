@@ -6,6 +6,7 @@
     <ProjectGuid>{08182574-F5E5-4800-BE08-1E5DDB0DB5D7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AssemblyName>Votive2017</AssemblyName>
+    <ShouldSignOutput>true</ShouldSignOutput>
 
     <VsixType>v3</VsixType>
 

@@ -5,6 +5,8 @@ branches:
     - master
     - develop
 
+image: Visual Studio 2015
+
 version: 0.0.0.{build}
 configuration: Release
 
@@ -47,7 +49,12 @@ for:
 
   environment:
     KeyPairDownloadToken:
-      secure: U5OkonXbnqz0MB5NLRcfxdPvz7bG9QWHRt8ZeldmeSpoqW6GmkAirTlIDU1OZAW8pWIyz6LrTeTVRntzVSRoXw6pwRYfYO+Zzl43RHd7UvmPEPKvrqiqlDBT9+TrFPmOdvm13FaX4ljs19K94ALL9w==
+      secure: U5OkonXbnqz0MB5NLRcfxbJyt5ZSAlKYbaJbs1z4qX3EuLHX83tMQvW7Kgf594jPsw7NZqAYepUCJTLuyr3vazJsuHO1p5A4AHyCiRjqxG+8nI4937EhbWtsxqrEnUttrs2M/6jLKOTk6fvJv7zkXFiEfur1JHnJNb3Moe2jQvBVBe1WoCYGTJqo1eSQccnD
+    PleaseSignOutput: true
+    SignClientUser:
+      secure: s+b2kuhi/AlE8ZYFsNVHFLfgJOwi0fIKMCOP+xL++8U=
+    SignClientSecret:
+      secure: tlJbxYs82lHpHf8dttYr4LpKbWSAC/gKlvyDfUWKBj0=
 
   install:
     - ps: $env:OFFICIAL_WIX_BUILD=$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath(".\wix4_keypair.snk")

@@ -15,6 +15,9 @@
   <!-- Steal some tasks from the MSBuild tasks assembly -->
   <UsingTask TaskName="AssignTargetPath" AssemblyName="Microsoft.Build.Tasks, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
 
+  <!-- Ensure Signing targets are imported. -->
+  <Import Project="WixBuild.Signing.targets" Condition="'$(WixBuildSigningTargetsDefined)'!='true'" />
+
   <!--
   ================================================================================================
   Diagnostics
@@ -69,17 +72,6 @@
       Text="Strong name validation for the WiX toolset must be disabled on a developer machine to build. Execute 'msbuild $(MSBuildThisFileDirectory)OneTimeWixBuildInitialization.proj' from an elevated command prompt." />
 
     <Error
-      Code="WIXBUILD000"
-      Condition=" '$(OFFICIAL_WIX_BUILD)'!='' and !($(VS2010SdkAvailable) and $(VS2012SdkAvailable) and $(VS2013SdkAvailable) and $(VS2015SdkAvailable))"
-      Text="All versions of VS and VS SDK are required on an official build. Install VS2010, VS2012, VS2013, VS2015, and matching SDKs." />
-
-    <!--
-        Note that we don't actually require any VSSDK beyond the VS2010 SDK. We'll build against later versions if
-        available using the "latest available" logic in WixBuild.VisualStudioSDK.targets. However, we're not
-        currently building Votive in a way that requires any version later than VS2010.
-    -->
-
-    <Error
       Code="WIXBUILD001"
       Condition=" !Exists('$(AssemblyOriginatorKeyFile)') "
       Text="Could not find public (or private) key file for WiX build at: $(AssemblyOriginatorKeyFile)" />
@@ -93,6 +85,16 @@
       Code="WIXBUILD004"
       Condition="!Exists('$(HelpCompiler)')"
       Text="$(HelpCompiler) does not exist. Please install the HTML Help Workshop that is part of the HTML Help SDK." />
+
+    <Error
+      Code="WIXBUILD05"
+      Condition=" '$(PleaseSignOutput)'!='' and !Exists('$(SignClientPath)') "
+      Text="Cannot locate SignClient. Ensure SignClient is present at &quot;$(SignClientPath)&quot;. If not, run the following command from the root of the project: msbuild -t:DotnetToolRestore" />
+
+    <Error
+      Code="WIXBUILD06"
+      Condition=" '$(PleaseSignOutput)'!='' and ('$(SignClientUser)'=='' or '$(SignClientSecret)'=='') "
+      Text="Signing is requested but one or both required properites SignClientUser and SignClientSecret were not specified on the command line or as environment variables." />
 
     <Error
       Code="WIXBUILD008"
@@ -254,16 +256,13 @@
   ================================================================================================
   -->
   <PropertyGroup>
-    <CompileNativeResourcesDependsOn>
-      WriteCppVersionFile
-    </CompileNativeResourcesDependsOn>
     <PrepareResourcesDependsOn>
       CompileNativeResources;
       $(PrepareResourcesDependsOn)
     </PrepareResourcesDependsOn>
     <ResFile>$(IntermediateOutputPath)$(TargetName).res</ResFile>
     <RcIncludeStandardPaths>true</RcIncludeStandardPaths>
-    <RcStandardPaths>$(WixVersionPath)\;$(WixRoot)src\common;$(PlatformSdkIncludePath);$(VCIncludePath)</RcStandardPaths>
+    <RcStandardPaths>;$(WixRoot)src\common;$(PlatformSdkIncludePath);$(VCIncludePath)</RcStandardPaths>
   </PropertyGroup>
 
   <Target
