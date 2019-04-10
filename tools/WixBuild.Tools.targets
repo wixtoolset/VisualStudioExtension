@@ -55,7 +55,7 @@
     $(WIX_ROOT) - The root directory of the wix source files.
   ================================================================================================
   -->
-  <Target Name="CheckRequiredProperties">
+  <Target Name="CheckRequiredProperties" DependsOnTargets="DotnetToolRestore">
     <!-- These are handy debugging messages only shown when /verbosity:detailed is set. -->
     <Message Importance="low" Text="WixRoot = $(WixRoot)" />
     <Message Importance="low" Text="WixObjRoot = $(WixObjRoot)" />
