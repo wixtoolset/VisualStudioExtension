@@ -537,11 +537,14 @@
       <Project>{3C09CD7D-CA0F-4BB0-A1BE-0622645E93CB}</Project>
       <Name>v3templates</Name>
     </ProjectReference>
+    <!--
+    Restore this reference when v4 templates are ready to release.
     <ProjectReference Include="..\Templates\v4\v4templates.csproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <Project>{BD9B8F82-F240-4ED8-BCDC-8C1477C09CA8}</Project>
       <Name>v4templates</Name>
     </ProjectReference>
+    -->
   </ItemGroup>
 
   <ItemGroup>
