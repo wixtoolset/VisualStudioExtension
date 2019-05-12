@@ -28,7 +28,7 @@ namespace WixToolset.VisualStudioExtension
     [ProvideObject(typeof(WixBuildPropertyPage), RegisterUsing = RegistrationMethod.CodeBase)]
     [ProvideObject(typeof(WixPathsPropertyPage), RegisterUsing = RegistrationMethod.CodeBase)]
     [ProvideObject(typeof(WixToolsSettingsPropertyPage), RegisterUsing = RegistrationMethod.CodeBase)]
-    [ProvideProjectFactory(typeof(WixProjectFactory), "WiX Toolset", "#100", "wixproj", "wixproj", "ProjectTemplates", LanguageVsTemplate = WixProjectNode.ProjectTypeName)]
+    [ProvideProjectFactory(typeof(WixProjectFactory), "WiX Toolset", "#100", "wixproj", "wixproj", ".\\NullPath", LanguageVsTemplate = WixProjectNode.ProjectTypeName)]
     [CLSCompliant(false)]
     public sealed class WixPackage : ProjectPackage, IVsInstalledProduct
     {
