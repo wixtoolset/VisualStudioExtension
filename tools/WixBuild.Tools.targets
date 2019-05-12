@@ -78,44 +78,13 @@
 
     <Error
       Code="WIXBUILD002"
-      Condition=" '$(PlatformSdkBinPath)' == '' or !Exists('$(PlatformSdkBinPath)')"
-      Text="Error the &quot;Microsoft Windows SDK for Windows 7 and .NET Framework 4&quot; or &quot;Visual Studio 2010&quot; must be installed." />
-
-    <Error
-      Code="WIXBUILD004"
-      Condition="!Exists('$(HelpCompiler)')"
-      Text="$(HelpCompiler) does not exist. Please install the HTML Help Workshop that is part of the HTML Help SDK." />
-
-    <Error
-      Code="WIXBUILD05"
       Condition=" '$(PleaseSignOutput)'!='' and !Exists('$(SignClientPath)') "
       Text="Cannot locate SignClient. Ensure SignClient is present at &quot;$(SignClientPath)&quot;. If not, run the following command from the root of the project: msbuild -t:DotnetToolRestore" />
 
     <Error
-      Code="WIXBUILD06"
+      Code="WIXBUILD003"
       Condition=" '$(PleaseSignOutput)'!='' and ('$(SignClientUser)'=='' or '$(SignClientSecret)'=='') "
       Text="Signing is requested but one or both required properites SignClientUser and SignClientSecret were not specified on the command line or as environment variables." />
-
-    <Error
-      Code="WIXBUILD008"
-      Condition=" $(VS2013Available) and '12.0'>'$(MSBuildToolsVersion)' "
-      Text="When Visual Studio 2013 is installed, you must use MSBuild v12.0 to build. MSBuild v12.0 is typically found here: ProgramFiles(x86)\MSBuild\12.0\Bin\MSBuild.exe" />
-
-    <Error
-      Code="WIXBUILD009"
-      Condition=" $(VS2013Available) and '12.0'>'$(VisualStudioVersion)' "
-      Text="When Visual Studio 2013 is installed, the VisualStudioVersion environment variable must be set to '12.0' or higher. This should be handled by building with MSBuild v12.0. However, you may also be able to set the environment variable directly or use the 'Developer Command Prompt' provided by Visual Studio 2013 (or newer) to initialize your command prompt." />
-
-    <Error
-      Code="WIXBUILD010"
-      Condition=" $(VS2012Available) and '11.0'>'$(VisualStudioVersion)' "
-      Text="When Visual Studio 2012 is installed, the VisualStudioVersion environment variable must be set to '11.0' or higher. Set the environment variable directly or use the 'Developer Command Prompt' provided by Visual Studio 2012 (or newer) to initialize your command prompt." />
-
-    <Error
-      Code="WIXBUILD011"
-      Condition=" $(VS2015Available) and '14.0'>'$(MSBuildToolsVersion)' "
-      Text="When Visual Studio 2015 is installed, you must use MSBuild v14.0 to build. MSBuild v14.0 is typically found here: ProgramFiles(x86)\MSBuild\14.0\Bin\MSBuild.exe" />
-
   </Target>
 
   <!--
