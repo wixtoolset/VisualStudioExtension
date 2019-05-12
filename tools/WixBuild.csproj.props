@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright (c) .NET Foundation and contributors. All rights reserved. Licensed under the Microsoft Reciprocal License. See LICENSE.TXT file in the project root for full license information. -->
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
-  <Import Project="WixBuild.props" />
+  <Import Project="WixBuild.props" Condition=" '$(WixBuildPropertiesDefined)'!='true' " />
 
   <!-- Default C# properties -->
   <PropertyGroup>
@@ -36,20 +36,11 @@
     <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(VersionCS)' == '' ">
-    <VersionCS>wixver.cs</VersionCS>
-  </PropertyGroup>
   <PropertyGroup Condition=" '$(DistCS)' == '' ">
     <DistCS>WixDistribution.cs</DistCS>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(CopyBuildOutputToOutputDirectory)'!='false' ">
-    <!-- Include the current version in all of the wix projects (this won't show up in the Solution Explorer, but it is used when building). -->
-    <!--<Compile Include="$(WixVersionPath)$(VersionCS)">
-      <Link>Properties\$(VersionCS)</Link>
-      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
-      <Visible>false</Visible>
-    </Compile>-->
     <Compile Include="$(WixRoot)src\common\$(DistCS)">
       <Link>Properties\$(DistCS)</Link>
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>

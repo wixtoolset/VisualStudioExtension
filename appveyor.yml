@@ -1,47 +1,67 @@
--
-  version: 0.0.0.{build}
-  configuration: Release
+# Copyright (c) .NET Foundation and contributors. All rights reserved. Licensed under the Microsoft Reciprocal License. See LICENSE.TXT file in the project root for full license information.
 
-  install:
-    - ps: Start-Process (Get-ChildItem -Path "${env:ProgramFiles(x86)}\Microsoft SDKs\Windows" -Filter sn.exe -Recurse | Select-Object -First 1).FullName -ArgumentList "-q -Vr *,ce35f76fcda82bad"
+branches:
+  only:
+    - master
+    - develop
 
-  before_build:
-    - nuget restore
+image: Visual Studio 2015
 
-  build:
-    project: votive.sln
+version: 0.0.0.{build}
+configuration: Release
 
-  skip_tags: true
+environment:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+  NUGET_XMLDOC_MODE: skip
 
+install:
+  - msbuild tools\OneTimeWixBuildInitialization.proj
+
+before_build:
+  - nuget restore Votive.sln
+
+build:
+  project: src\src.proj
+
+pull_requests:
+  do_not_increment_build_number: true
+
+nuget:
+  disable_publish_on_pr: true
+
+skip_branch_with_pr: true
+skip_tags: true
+
+artifacts:
+  - path: build\Release\**\*.vsix
+
+notifications:
+- provider: Slack
+  incoming_webhook:
+    secure: p5xuu+4x2JHfwGDMDe5KcG1k7gZxqYc4jWVwvyNZv5cvkubPD2waJs5yXMAXZNN7Z63/3PWHb7q4KoY/99AjauYa1nZ4c5qYqRPFRBKTHfA=
+
+for:
 -
   branches:
     only:
       - master
 
-  version: 0.0.0.{build}
-  configuration: Release
-
   environment:
     KeyPairDownloadToken:
-      secure: U5OkonXbnqz0MB5NLRcfxdPvz7bG9QWHRt8ZeldmeSpoqW6GmkAirTlIDU1OZAW8pWIyz6LrTeTVRntzVSRoXw6pwRYfYO+Zzl43RHd7UvmPEPKvrqiqlDBT9+TrFPmOdvm13FaX4ljs19K94ALL9w==
+      secure: U5OkonXbnqz0MB5NLRcfxbJyt5ZSAlKYbaJbs1z4qX3EuLHX83tMQvW7Kgf594jPsw7NZqAYepUCJTLuyr3vazJsuHO1p5A4AHyCiRjqxG+8nI4937EhbWtsxqrEnUttrs2M/6jLKOTk6fvJv7zkXFiEfur1JHnJNb3Moe2jQvBVBe1WoCYGTJqo1eSQccnD
+    PleaseSignOutput: true
+    SignClientUser:
+      secure: s+b2kuhi/AlE8ZYFsNVHFLfgJOwi0fIKMCOP+xL++8U=
+    SignClientSecret:
+      secure: tlJbxYs82lHpHf8dttYr4LpKbWSAC/gKlvyDfUWKBj0=
 
   install:
     - ps: $env:OFFICIAL_WIX_BUILD=$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath(".\wix4_keypair.snk")
     - ps: Start-FileDownload -Url "https://wixdl.blob.core.windows.net/secure/keys/wix4_keypair.snk${env:KeyPairDownloadToken}" -FileName "${env:OFFICIAL_WIX_BUILD}"
 
-  before_build:
-    - nuget restore
-
-  build:
-    project: votive.sln
-
   after_build:
     - ps: Remove-Item "${env:OFFICIAL_WIX_BUILD}"
-
-  skip_tags: true
-
-  artifacts:
-    - path: build\Release\**\*.vsix
 
   deploy:
     provider: GitHub

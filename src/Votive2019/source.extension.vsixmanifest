@@ -13,6 +13,8 @@
   </Prerequisites>
   <Dependencies>
     <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.0,)" />
+    <Dependency d:Source="Project" d:ProjectName="v3schemas" d:InstallSource="Embed" d:VsixSubPath="sc" Location="|v3schemas;VSIXContainerProjectOutputGroup|" DisplayName="|v3schemas;VSIXNameProjectOutputGroup|" Id="|v3schemas;VSIXIdentifierProjectOutputGroup|" />
+    <Dependency d:Source="Project" d:ProjectName="v4schemas" d:InstallSource="Embed" d:VsixSubPath="sc" Location="|v4schemas;VSIXContainerProjectOutputGroup|" DisplayName="|v4schemas;VSIXNameProjectOutputGroup|" Id="|v4schemas;VSIXIdentifierProjectOutputGroup|" />
   </Dependencies>
   <Installation AllUsers="true">
     <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[16.0,17.0)" />
