@@ -4,6 +4,10 @@
     <Name _locID="TSDATA_DUT_Name">C# Custom Action Project for WiX v3</Name>
     <Description _locID="TSDATA_DUT_Description">A project for creating an MSI custom action using WiX Toolset v3</Description>
     <Icon Package="{FAE04EC1-301F-11d3-BF4B-00C04F79EFBC}" ID="4547" />
+    <LanguageTag Value="C#" />
+    <LanguageTag Value="WiX" />
+    <PlatformTag Value="Windows" />
+    <ProjectTypeTag Value="CustomAction" />
     <ProjectType>WiX</ProjectType>
     <TemplateID>Microsoft.Deployment.WindowsInstaller.CustomActionCS</TemplateID>
     <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>

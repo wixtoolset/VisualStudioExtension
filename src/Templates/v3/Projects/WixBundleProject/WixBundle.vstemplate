@@ -3,6 +3,11 @@
     <Name _locID="TSDATA_DUT_Name">Bootstrapper Project for WiX v3</Name>
     <Description _locID="TSDATA_DUT_Description">A project for creating a WiX based EXE setup layout using WiX Toolset v3</Description>
     <Icon>WixBundle.ico</Icon>
+    <LanguageTag Value="WiX" />
+    <PlatformTag Value="Windows" />
+    <ProjectTypeTag Value="EXE" />
+    <ProjectTypeTag Value="Bootstrapper" />
+    <ProjectTypeTag Value="Bundle" />
     <ProjectType>WiX</ProjectType>
     <SortOrder>50</SortOrder>
     <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
