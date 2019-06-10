@@ -3,6 +3,10 @@
     <Name _locID="TSDATA_DUT_Name">Setup Project for WiX v3</Name>
     <Description _locID="TSDATA_DUT_Description">A project for creating an MSI file using WiX Toolset v3</Description>
     <Icon>WixProject.ico</Icon>
+    <LanguageTag Value="WiX" />
+    <PlatformTag Value="Windows" />
+    <ProjectTypeTag Value="MSI" />
+    <ProjectTypeTag Value="Package" />
     <ProjectType>WiX</ProjectType>
     <SortOrder>20</SortOrder>
     <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>

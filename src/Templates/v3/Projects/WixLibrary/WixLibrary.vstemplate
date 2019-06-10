@@ -3,6 +3,10 @@
     <Name _locID="TSDATA_DUT_Name">Setup Library Project for WiX v3</Name>
     <Description _locID="TSDATA_DUT_Description">A project for creating a wixlib library using WiX Toolset v3</Description>
     <Icon>WixLibrary.ico</Icon>
+    <LanguageTag Value="WiX" />
+    <PlatformTag Value="Windows" />
+    <ProjectTypeTag Value="wixlib" />
+    <ProjectTypeTag Value="Library" />
     <ProjectType>WiX</ProjectType>
     <SortOrder>40</SortOrder>
     <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
