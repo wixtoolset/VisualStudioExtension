@@ -2,7 +2,7 @@
 <Vsix Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
   <Identifier Id="WixToolset.VisualStudioExtension.Dev14">
     <Name>Wix Toolset Visual Studio 2015 Extension</Name>
-    <Author>.NET Foundation and contributors</Author>
+    <Author>WiX Toolset</Author>
     <Version>|Votive2015;GetBuildVersion|</Version>
     <Locale>1033</Locale>
     <InstalledByMsi>false</InstalledByMsi>

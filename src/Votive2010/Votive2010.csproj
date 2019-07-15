@@ -6,7 +6,8 @@
     <ProjectGuid>{3FFC5AB2-97CC-48C1-A28B-CC7F1CEEE92A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AssemblyName>Votive2010</AssemblyName>
-    <ShouldSignOutput>true</ShouldSignOutput>
+    <!--- Signing only signs SHA2 and VS2010 does not support SHA2 so no signing -->
+    <ShouldSignOutput>false</ShouldSignOutput>
 
     <CopyBuildOutputToOutputDirectory>false</CopyBuildOutputToOutputDirectory>
     <CopyOutputSymbolsToOutputDirectory>false</CopyOutputSymbolsToOutputDirectory>
