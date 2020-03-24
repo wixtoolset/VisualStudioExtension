@@ -27,7 +27,7 @@ namespace Microsoft.VisualStudio.Package
 		/// <summary>
 		/// The name of the assembly this refernce represents
 		/// </summary>
-			private Guid referencedProjectGuid;
+		private Guid referencedProjectGuid;
 
 		protected string referencedProjectName = String.Empty;
 
@@ -186,7 +186,9 @@ namespace Microsoft.VisualStudio.Package
 				{
 					if (!vcProjectEngineLoaded)
 					{
-						vcProjectEngine = Assembly.Load("Microsoft.VisualStudio.VCProjectEngine, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a");
+						// Use partial name because it's supposed to be already loaded into this AppDomain and
+						// there is no trivial way to determine which version should be manually loaded.
+						vcProjectEngine = Assembly.Load("Microsoft.VisualStudio.VCProjectEngine");
 						vcProjectEngineLoaded = true;
 					}
 				}
@@ -418,31 +420,71 @@ namespace Microsoft.VisualStudio.Package
 			this.referencedProjectRelativePath = this.ItemNode.GetMetadata(ProjectFileConstants.Include);
 			Debug.Assert(!String.IsNullOrEmpty(this.referencedProjectRelativePath), "Could not retrive referenced project path form project file");
 
-			string guidString = this.ItemNode.GetMetadata(ProjectFileConstants.Project);
-
-			// Continue even if project setttings cannot be read.
-			try
-			{
-				this.referencedProjectGuid = new Guid(guidString);
-
-				this.buildDependency = new BuildDependency(this.ProjectMgr, this.referencedProjectGuid);
-				this.ProjectMgr.AddBuildDependency(this.buildDependency);
-			}
-			finally
-			{
-				Debug.Assert(this.referencedProjectGuid != Guid.Empty, "Could not retrive referenced project guidproject file");
-
-				this.ReferencedProjectName = this.ItemNode.GetMetadata(ProjectFileConstants.Name);
-
-				Debug.Assert(!String.IsNullOrEmpty(this.referencedProjectName), "Could not retrive referenced project name form project file");
-			}
-
 			Uri uri = new Uri(this.ProjectMgr.BaseURI.Uri, this.referencedProjectRelativePath);
 
 			if (uri != null)
 			{
 				this.referencedProjectFullPath = Microsoft.VisualStudio.Shell.Url.Unescape(uri.LocalPath, true);
 			}
+
+			string guidString = this.ItemNode.GetMetadata(ProjectFileConstants.Project);
+
+			EnvDTE.Project project = null;
+			// Continue even if project setttings cannot be read.
+			try
+			{
+				if (!string.IsNullOrEmpty(guidString))
+				{
+					this.referencedProjectGuid = new Guid(guidString);
+					IVsHierarchy hierarchy = VsShellUtilities.GetHierarchy(this.ProjectMgr.Site, this.referencedProjectGuid);
+					Debug.Assert(null != hierarchy, "Could not retrive referenced project");
+					object extObject;
+					if (Microsoft.VisualStudio.ErrorHandler.Succeeded(
+							hierarchy.GetProperty(VSConstants.VSITEMID_ROOT, (int)__VSHPROPID.VSHPROPID_ExtObject, out extObject)))
+					{
+						project = extObject as EnvDTE.Project;
+					}
+				}
+				else
+				{
+					project = ReferencedProjectObject;
+					if (null != project)
+					{
+						IVsSolution solution = this.ProjectMgr.Site.GetService(typeof(SVsSolution)) as IVsSolution;
+						if (null != solution)
+						{
+							// Get the hierarchy for this project.
+							IVsHierarchy hierarchy;
+							ErrorHandler.ThrowOnFailure(solution.GetProjectOfUniqueName(project.UniqueName, out hierarchy));
+							// Get the project guid
+							ErrorHandler.ThrowOnFailure(hierarchy.GetGuidProperty(
+										VSConstants.VSITEMID_ROOT,
+										(int)__VSHPROPID.VSHPROPID_ProjectIDGuid,
+										out this.referencedProjectGuid));
+						}
+					}
+				}
+			}
+			catch
+			{
+				this.referencedProjectGuid = Guid.Empty;
+				project = null;
+				throw;
+			}
+			finally
+			{
+				Debug.Assert(this.referencedProjectGuid != Guid.Empty, "Could not retrive referenced project guidproject file");
+
+				this.ReferencedProjectName = this.ItemNode.GetMetadata(ProjectFileConstants.Name);
+				if (String.IsNullOrEmpty(this.referencedProjectName) && null != project)
+				{
+					this.ReferencedProjectName = project.Name;
+				}
+				Debug.Assert(!String.IsNullOrEmpty(this.referencedProjectName), "Could not retrive referenced project name form project file");
+			}
+
+			this.buildDependency = new BuildDependency(this.ProjectMgr, this.referencedProjectGuid);
+			this.ProjectMgr.AddBuildDependency(this.buildDependency);
 		}
 
 		/// <summary>
