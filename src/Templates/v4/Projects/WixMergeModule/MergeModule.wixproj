@@ -11,13 +11,26 @@
 		<WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\WiX Toolset\v4\wix.targets</WixTargetsPath>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-		<OutputPath>bin\$(Configuration)\</OutputPath>
-		<IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+		<OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+		<IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
+		<InstallerPlatform>x86</InstallerPlatform>
 		<DefineConstants>Debug</DefineConstants>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-		<OutputPath>bin\$(Configuration)\</OutputPath>
-		<IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+		<OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+		<IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
+		<InstallerPlatform>x86</InstallerPlatform>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+		<OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+		<IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
+		<InstallerPlatform>x64</InstallerPlatform>
+		<DefineConstants>Debug</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+		<OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+		<IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
+		<InstallerPlatform>x64</InstallerPlatform>
 	</PropertyGroup>
 	<ItemGroup>
 		<Compile Include="MergeModule.wxs" />
