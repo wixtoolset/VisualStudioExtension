@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <?if $(sys.BUILDARCH) = x86 ?>
+    <?define PlatformProgramFilesFolder="ProgramFilesFolder" ?>
+  <?elseif $(sys.BUILDARCH) = x64 ?>
+    <?define PlatformProgramFilesFolder="ProgramFiles64Folder" ?>
+  <?elseif ?>
+    <?error Unkown platform. ?>
+  <?endif ?>
+</Include>

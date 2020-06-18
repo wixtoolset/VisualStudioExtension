@@ -35,6 +35,9 @@
 	<ItemGroup>
 		<Compile Include="Product.wxs" />
 	</ItemGroup>
+	<ItemGroup>
+		<Content Include="Platform.wxi" />
+	</ItemGroup>
 	<Import Project="$(WixTargetsPath)" Condition=" Exists('$(WixTargetsPath)') " />
 	<Target Name="EnsureWixToolsetInstalled" Condition=" !Exists('$(WixTargetsPath)') ">
 		<Error Text="The WiX Toolset v4 build tools must be installed to build this project. To download the WiX Toolset v4, see http://wixtoolset.org/releases/" />
