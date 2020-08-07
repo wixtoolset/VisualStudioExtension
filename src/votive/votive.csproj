@@ -28,6 +28,7 @@
   <ItemGroup>
     <Compile Include="ProjectBase\Misc\ConnectionPointContainer.cs" />
     <Compile Include="ProjectBase\Misc\ExternDll.cs" />
+    <Compile Include="ProjectBase\Misc\IVsAppId.cs" />
     <Compile Include="ProjectBase\Misc\NativeMethods.cs" />
     <Compile Include="ProjectBase\Misc\UnsafeNativeMethods.cs" />
     <Compile Include="ProjectBase\AssemblyReferenceNode.cs" />

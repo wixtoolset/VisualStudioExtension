@@ -1,0 +1,4 @@
+[submodule "submodules/project-system"]
+	path = submodules/project-system
+	url = https://github.com/dotnet/project-system.git
+	branch = master

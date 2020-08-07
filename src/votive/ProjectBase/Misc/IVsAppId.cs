@@ -1,0 +1,1 @@
+../../../../submodules/project-system/src/Microsoft.VisualStudio.ProjectSystem.Managed.VS/ProjectSystem/VS/Interop/IVsAppId.cs

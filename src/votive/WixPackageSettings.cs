@@ -7,6 +7,7 @@ namespace WixToolset.VisualStudioExtension
     using System.Globalization;
     using System.Security.AccessControl;
     using Microsoft.VisualStudio;
+    using Microsoft.VisualStudio.ProjectSystem.VS.Interop;
     using Microsoft.VisualStudio.Shell.Interop;
     using Microsoft.Win32;
 
@@ -26,6 +27,7 @@ namespace WixToolset.VisualStudioExtension
         private string visualStudioRegistryRoot;
         private Version visualStudioVersion;
         private MachineSettingString toolsDirectory;
+        private IServiceProvider serviceProvider;
 
         // =========================================================================================
         // Constructors
@@ -41,6 +43,7 @@ namespace WixToolset.VisualStudioExtension
 
             if (serviceProvider != null)
             {
+                this.serviceProvider = serviceProvider;
                 // get the Visual Studio registry root
                 ILocalRegistry3 localRegistry = WixHelperMethods.GetService<ILocalRegistry3, SLocalRegistry>(serviceProvider);
                 ErrorHandler.ThrowOnFailure(localRegistry.GetLocalRegistryRoot(out this.visualStudioRegistryRoot));
@@ -106,11 +109,36 @@ namespace WixToolset.VisualStudioExtension
                     string regPath = WixHelperMethods.RegistryPathCombine(this.visualStudioRegistryRoot, @"Setup\VS\BuildNumber");
                     using (RegistryKey regKey = Registry.LocalMachine.OpenSubKey(regPath, RegistryKeyPermissionCheck.ReadSubTree, RegistryRights.ReadKey))
                     {
-                        string lcid = CultureInfo.CurrentUICulture.LCID.ToString(CultureInfo.InvariantCulture);
-                        string versionString = regKey.GetValue(lcid) as string;
+                        string versionString;
+                        if (regKey == null)
+                        {
+                            // Visual Studio 2017 has no subkey "BuildNumber" in "Setup\VS\" so use EnvDTE.DTE.Version instead
+                            // https://stackoverflow.com/questions/11082436/detect-the-visual-studio-version-inside-a-vspackage
+                            IVsAppId vsAppId = WixHelperMethods.GetServiceNoThrow<IVsAppId, SVsAppId>(serviceProvider);
+                            if (vsAppId != null && ErrorHandler.Succeeded(vsAppId.GetProperty((int)VSAPropID.VSAPROPID_ProductSemanticVersion, out object oVersion)) &&
+                                            oVersion is string semVersion)
+                            {
+                                // This is a semantic version string. We only care about the non-semantic version part
+                                int index = semVersion.IndexOfAny(new[] { '+', '-' });
+                                versionString = index != -1 ? semVersion.Substring(0, index) : semVersion;
+                            }
+                            else
+                            {
+                                EnvDTE.DTE dte = WixHelperMethods.GetService<EnvDTE.DTE, EnvDTE.DTE>(serviceProvider);
+                                versionString = dte.Version;
+                            }
+                            if (versionString == null)
+                                WixHelperMethods.TraceFail("Cannot find the Visual Studio environment version with COM interfaces.");
+                        }
+                        else
+                        {
+                            string lcid = CultureInfo.CurrentUICulture.LCID.ToString(CultureInfo.InvariantCulture);
+                            versionString = regKey.GetValue(lcid) as string;
+                            if (versionString == null)
+                                WixHelperMethods.TraceFail("Cannot find the Visual Studio environment version in the registry path '{0}'.", WixHelperMethods.RegistryPathCombine(regPath, lcid));
+                        }
                         if (versionString == null)
                         {
-                            WixHelperMethods.TraceFail("Cannot find the Visual Studio environment version in the registry path '{0}'.", WixHelperMethods.RegistryPathCombine(regPath, lcid));
                             this.visualStudioVersion = DefaultVersion;
                         }
                         else
@@ -309,7 +337,7 @@ namespace WixToolset.VisualStudioExtension
         /// Represents a strongly-typed enum machine setting.
         /// </summary>
         /// <typeparam name="T">The type of the enum.</typeparam>
-        private class MachineSettingEnum<T> : MachineSetting<T> where T: struct
+        private class MachineSettingEnum<T> : MachineSetting<T> where T : struct
         {
             /// <summary>
             /// Initializes a new instance of the <see cref="MachineSettingEnum&lt;T&gt;"/> class.
