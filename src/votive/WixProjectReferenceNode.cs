@@ -120,6 +120,17 @@ namespace WixToolset.VisualStudioExtension
             }
         }
 
+        internal override Version VisualStudioVersion
+        {
+            get
+            {
+                WixProjectNode projectNode = this.ProjectMgr as WixProjectNode;
+                if (projectNode == null)
+                    return null;
+                return projectNode.WixPackage.Settings.VisualStudioVersion;
+            }
+        }
+
         /// <summary>
         /// Gets the filter used in the Add Reference dialog box.
         /// </summary>

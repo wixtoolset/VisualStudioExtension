@@ -142,6 +142,11 @@ namespace Microsoft.VisualStudio.Package
 			}
 		}
 
+		internal virtual Version VisualStudioVersion
+		{
+			get { return null; }
+		}
+
 		/// <summary>
 		/// Searches the solution or project for a contained project with a given path.
 		/// </summary>
@@ -186,9 +191,10 @@ namespace Microsoft.VisualStudio.Package
 				{
 					if (!vcProjectEngineLoaded)
 					{
-						// Use partial name because it's supposed to be already loaded into this AppDomain and
-						// there is no trivial way to determine which version should be manually loaded.
-						vcProjectEngine = Assembly.Load("Microsoft.VisualStudio.VCProjectEngine");
+						AssemblyName anVCProjectEngine = new AssemblyName("Microsoft.VisualStudio.VCProjectEngine, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a");
+						if (VisualStudioVersion != null)
+							anVCProjectEngine.Version = new Version(VisualStudioVersion.Major, 0, 0, 0);
+						vcProjectEngine = Assembly.Load(anVCProjectEngine);
 						vcProjectEngineLoaded = true;
 					}
 				}
