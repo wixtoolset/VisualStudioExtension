@@ -115,8 +115,10 @@ namespace WixToolset.VisualStudioExtension
                             // Visual Studio 2017 has no subkey "BuildNumber" in "Setup\VS\" so use EnvDTE.DTE.Version instead
                             // https://stackoverflow.com/questions/11082436/detect-the-visual-studio-version-inside-a-vspackage
                             IVsAppId vsAppId = WixHelperMethods.GetServiceNoThrow<IVsAppId, SVsAppId>(serviceProvider);
-                            if (vsAppId != null && ErrorHandler.Succeeded(vsAppId.GetProperty((int)VSAPropID.VSAPROPID_ProductSemanticVersion, out object oVersion)) &&
-                                            oVersion is string semVersion)
+                            object oVersion;
+                            string semVersion;
+                            if (vsAppId != null && ErrorHandler.Succeeded(vsAppId.GetProperty((int)VSAPropID.VSAPROPID_ProductSemanticVersion, out oVersion)) &&
+                                (semVersion = oVersion as string) != null)
                             {
                                 // This is a semantic version string. We only care about the non-semantic version part
                                 int index = semVersion.IndexOfAny(new[] { '+', '-' });
