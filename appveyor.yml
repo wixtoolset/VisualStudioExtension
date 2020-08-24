@@ -16,6 +16,9 @@ environment:
   NUGET_XMLDOC_MODE: skip
 
 install:
+  - git submodule update --init --recursive
+  - git config core.symlinks true
+  - git reset --hard
   - msbuild tools\OneTimeWixBuildInitialization.proj
 
 before_build:
@@ -57,6 +60,9 @@ for:
       secure: tlJbxYs82lHpHf8dttYr4LpKbWSAC/gKlvyDfUWKBj0=
 
   install:
+    - cmd: git submodule update --init --recursive
+    - cmd: git config core.symlinks true
+    - cmd: git reset --hard
     - ps: $env:OFFICIAL_WIX_BUILD=$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath(".\wix4_keypair.snk")
     - ps: Start-FileDownload -Url "https://wixdl.blob.core.windows.net/secure/keys/wix4_keypair.snk${env:KeyPairDownloadToken}" -FileName "${env:OFFICIAL_WIX_BUILD}"
 
