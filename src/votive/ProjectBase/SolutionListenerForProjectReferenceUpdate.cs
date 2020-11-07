@@ -13,6 +13,7 @@ using Microsoft.VisualStudio.Shell;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using System.ComponentModel;
 using System.Collections;
 using System.Text;
 using IOleServiceProvider = Microsoft.VisualStudio.OLE.Interop.IServiceProvider;
@@ -50,7 +51,7 @@ namespace Microsoft.VisualStudio.Package
                 foreach (ProjectReferenceNode projectReference in projectReferences)
                 {
                     projectReference.Remove(false);
-                    // Set back the remove state on the project refererence. The reason why we are doing this is that the OnBeforeUnloadProject immedaitely calls
+                    // Set back the remove state on the project reference. The reason why we are doing this is that the OnBeforeUnloadProject immediately calls
                     // OnBeforeCloseProject, thus we would be deleting references when we should not. Unload should not remove references.
                     projectReference.CanRemoveReference = true;
                 }
@@ -70,7 +71,7 @@ namespace Microsoft.VisualStudio.Package
         {
             List<ProjectReferenceNode> projectReferences = this.GetProjectReferencesContainingThisProject(realHierarchy);
 
-            // Refersh the project reference node. That should trigger the drawing of the normal project reference icon.
+            // Refresh the project reference node. That should trigger the drawing of the normal project reference icon.
             foreach (ProjectReferenceNode projectReference in projectReferences)
             {
                 projectReference.CanRemoveReference = true;
@@ -78,6 +79,32 @@ namespace Microsoft.VisualStudio.Package
                 projectReference.OnInvalidateItems(projectReference.Parent);
             }
 
+            return VSConstants.S_OK;
+        }
+
+
+        public override int OnAfterOpenProject(IVsHierarchy hierarchy, int added)
+        {
+            if (added == 0)
+            {
+                try
+                {
+                    List<ProjectReferenceNode> projectReferences = this.GetProjectReferencesContainingThisProject(hierarchy);
+
+                    // finish the initialization of project reference node.
+                    foreach (ProjectReferenceNode projectReference in projectReferences)
+                    {
+                        ISupportInitializeNotification isiNode = projectReference as ISupportInitializeNotification;
+                        if (isiNode != null && !isiNode.IsInitialized)
+                            isiNode.EndInit();
+                    }
+                }
+                catch (Exception e)
+                {
+                    Trace.WriteLine("Exception :" + e.Message);
+                    return Marshal.GetHRForException(e);
+                }
+            }
             return VSConstants.S_OK;
         }
 
@@ -152,6 +179,16 @@ namespace Microsoft.VisualStudio.Package
 
             return VSConstants.S_OK;
 
+        }
+
+        public override int OnBeforeLoadProjectBatch(bool fIsBackgroundIdleBatch)
+        {
+            return VSConstants.S_OK;
+        }
+
+        public override int OnAfterLoadProjectBatch(bool fIsBackgroundIdleBatch)
+        {
+            return VSConstants.S_OK;
         }
 
         #endregion

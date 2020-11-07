@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.Reflection;
@@ -21,11 +22,11 @@ using VSConstants = Microsoft.VisualStudio.VSConstants;
 namespace Microsoft.VisualStudio.Package
 {
 	[CLSCompliant(false), ComVisible(true)]
-	public class ProjectReferenceNode : ReferenceNode
+	public class ProjectReferenceNode : ReferenceNode, ISupportInitializeNotification
 	{
-		#region fieds
+		#region fields
 		/// <summary>
-		/// The name of the assembly this refernce represents
+		/// The name of the assembly this reference represents
 		/// </summary>
 		private Guid referencedProjectGuid;
 
@@ -56,13 +57,16 @@ namespace Microsoft.VisualStudio.Package
 
 		/// <summary>
 		/// Possibility for solution listener to update the state on the dangling reference.
-		/// It will be set in OnBeforeUnloadProject then the nopde is invalidated then it is reset to false.
+		/// It will be set in OnBeforeUnloadProject then the node is invalidated then it is reset to false.
 		/// </summary>
 		private bool isNodeValid = false;
 
 		private static Assembly vcProjectEngine;
 
 		private static bool vcProjectEngineLoaded = false;
+
+		private EventHandler initialized;
+		private bool isInitialized;
 
 		#endregion
 
@@ -93,8 +97,8 @@ namespace Microsoft.VisualStudio.Package
 		}
 
 		/// <summary>
-		/// Possiblity to shortcut and set the dangling project reference icon.
-		/// It is ussually manipulated by solution listsneres who handle reference updates.
+		/// Possibility to shortcut and set the dangling project reference icon.
+		/// It is usually manipulated by solution listeners who handle reference updates.
 		/// </summary>
 		internal protected bool IsNodeValid
 		{
@@ -174,7 +178,7 @@ namespace Microsoft.VisualStudio.Package
 						continue;
 				}
 
-				//Skip this project if it is an umodeled project (unloaded)
+				//Skip this project if it is an unmodeled project (unloaded)
 				if (string.Compare(EnvDTE.Constants.vsProjectKindUnmodeled, prj.Kind, StringComparison.OrdinalIgnoreCase) == 0)
 				{
 					continue;
@@ -232,7 +236,7 @@ namespace Microsoft.VisualStudio.Package
 					pathProperty = prj.Properties.Item("FullPath");
 					if (null == pathProperty)
 					{
-						// The full path should alway be availabe, but if this is not the
+						// The full path should always be available, but if this is not the
 						// case then we have to skip it.
 						continue;
 					}
@@ -270,6 +274,23 @@ namespace Microsoft.VisualStudio.Package
 			return false;
 		}
 
+		private bool InitReferencedProjectFromProjectGuid()
+		{
+			if (this.referencedProjectGuid == Guid.Empty)
+				return false;
+			IVsHierarchy hierarchy = VsShellUtilities.GetHierarchy(this.ProjectMgr.Site, this.referencedProjectGuid);
+			//Debug.Assert(null != hierarchy, "Could not retrieve referenced project");
+			if (hierarchy == null)
+				return false;
+			object extObject;
+			if (!Microsoft.VisualStudio.ErrorHandler.Succeeded(
+					hierarchy.GetProperty(VSConstants.VSITEMID_ROOT, (int)__VSHPROPID.VSHPROPID_ExtObject, out extObject)))
+				return false;
+			EnvDTE.Project project = extObject as EnvDTE.Project;
+			this.referencedProject = project;
+			return true;
+		}
+
 		/// <summary>
 		/// Gets the automation object for the referenced project.
 		/// </summary>
@@ -279,15 +300,17 @@ namespace Microsoft.VisualStudio.Package
 			{
 				if (!this.referencedProjectIsCached)
 				{
-
-					// Search for the project in the collection of the projects in the
-					// current solution.
-					EnvDTE.DTE dte = (EnvDTE.DTE)this.ProjectMgr.GetService(typeof(EnvDTE.DTE));
-					if ((null == dte) || (null == dte.Solution))
+					if (!InitReferencedProjectFromProjectGuid())
 					{
-						return null;
+						// Search for the project in the collection of the projects in the
+						// current solution.
+						EnvDTE.DTE dte = (EnvDTE.DTE)this.ProjectMgr.GetService(typeof(EnvDTE.DTE));
+						if ((null == dte) || (null == dte.Solution))
+						{
+							return null;
+						}
+						InitReferencedProjectFromProjectItems(dte.Solution.Projects);
 					}
-					InitReferencedProjectFromProjectItems(dte.Solution.Projects);
 					this.referencedProjectIsCached = true;
 				}
 
@@ -371,7 +394,7 @@ namespace Microsoft.VisualStudio.Package
 
 				string outputPath = outputPathProperty.Value.ToString();
 
-				// Ususally the output path is relative to the project path, but it is possible
+				// Usually the output path is relative to the project path, but it is possible
 				// to set it as an absolute path. If it is not absolute, then evaluate its value
 				// based on the project directory.
 				if (!System.IO.Path.IsPathRooted(outputPath))
@@ -414,17 +437,31 @@ namespace Microsoft.VisualStudio.Package
 				return projectReference;
 			}
 		}
+
+		bool ISupportInitializeNotification.IsInitialized
+		{
+			get
+			{
+				return this.isInitialized;
+			}
+		}
+
+		event EventHandler ISupportInitializeNotification.Initialized
+		{
+			add { this.initialized += value; }
+			remove { this.initialized -= value; }
+		}
 		#endregion
 
 		#region ctors
 		/// <summary>
-		/// Constructor for the ReferenceNode. It is called when the project is reloaded, when the project element representing the refernce exists. 
+		/// Constructor for the ReferenceNode. It is called when the project is reloaded, when the project element representing the reference exists. 
 		/// </summary>
 		public ProjectReferenceNode(ProjectNode root, ProjectElement element)
 			: base(root, element)
 		{
 			this.referencedProjectRelativePath = this.ItemNode.GetMetadata(ProjectFileConstants.Include);
-			Debug.Assert(!String.IsNullOrEmpty(this.referencedProjectRelativePath), "Could not retrive referenced project path form project file");
+			Debug.Assert(!String.IsNullOrEmpty(this.referencedProjectRelativePath), "Could not retrieve referenced project path from project file");
 
 			Uri uri = new Uri(this.ProjectMgr.BaseURI.Uri, this.referencedProjectRelativePath);
 
@@ -434,63 +471,12 @@ namespace Microsoft.VisualStudio.Package
 			}
 
 			string guidString = this.ItemNode.GetMetadata(ProjectFileConstants.Project);
+			if (!string.IsNullOrEmpty(guidString))
+				this.referencedProjectGuid = new Guid(guidString);
 
-			EnvDTE.Project project = null;
-			// Continue even if project setttings cannot be read.
-			try
-			{
-				if (!string.IsNullOrEmpty(guidString))
-				{
-					this.referencedProjectGuid = new Guid(guidString);
-					IVsHierarchy hierarchy = VsShellUtilities.GetHierarchy(this.ProjectMgr.Site, this.referencedProjectGuid);
-					Debug.Assert(null != hierarchy, "Could not retrive referenced project");
-					object extObject;
-					if (Microsoft.VisualStudio.ErrorHandler.Succeeded(
-							hierarchy.GetProperty(VSConstants.VSITEMID_ROOT, (int)__VSHPROPID.VSHPROPID_ExtObject, out extObject)))
-					{
-						project = extObject as EnvDTE.Project;
-					}
-				}
-				else
-				{
-					project = ReferencedProjectObject;
-					if (null != project)
-					{
-						IVsSolution solution = this.ProjectMgr.Site.GetService(typeof(SVsSolution)) as IVsSolution;
-						if (null != solution)
-						{
-							// Get the hierarchy for this project.
-							IVsHierarchy hierarchy;
-							ErrorHandler.ThrowOnFailure(solution.GetProjectOfUniqueName(project.UniqueName, out hierarchy));
-							// Get the project guid
-							ErrorHandler.ThrowOnFailure(hierarchy.GetGuidProperty(
-										VSConstants.VSITEMID_ROOT,
-										(int)__VSHPROPID.VSHPROPID_ProjectIDGuid,
-										out this.referencedProjectGuid));
-						}
-					}
-				}
-			}
-			catch
-			{
-				this.referencedProjectGuid = Guid.Empty;
-				project = null;
-				throw;
-			}
-			finally
-			{
-				Debug.Assert(this.referencedProjectGuid != Guid.Empty, "Could not retrive referenced project guidproject file");
+			this.referencedProjectName = this.ItemNode.GetMetadata(ProjectFileConstants.Name);
 
-				this.ReferencedProjectName = this.ItemNode.GetMetadata(ProjectFileConstants.Name);
-				if (String.IsNullOrEmpty(this.referencedProjectName) && null != project)
-				{
-					this.ReferencedProjectName = project.Name;
-				}
-				Debug.Assert(!String.IsNullOrEmpty(this.referencedProjectName), "Could not retrive referenced project name form project file");
-			}
-
-			this.buildDependency = new BuildDependency(this.ProjectMgr, this.referencedProjectGuid);
-			this.ProjectMgr.AddBuildDependency(this.buildDependency);
+			this.isInitialized = TryFinishInit();
 		}
 
 		/// <summary>
@@ -508,7 +494,7 @@ namespace Microsoft.VisualStudio.Package
 
 			string fileName = String.Empty;
 
-			// Unfortunately we cannot use the path part of the projectReference string since it is not resolving correctly relative pathes.
+			// Unfortunately we cannot use the path part of the projectReference string since it is not resolving correctly relative paths.
 			if (indexOfSeparator != -1)
 			{
 				string projectGuid = projectReference.Substring(0, indexOfSeparator);
@@ -544,7 +530,7 @@ namespace Microsoft.VisualStudio.Package
 			this.referencedProjectFullPath = Path.Combine(projectPath, justTheFileName);
 
 			this.buildDependency = new BuildDependency(this.ProjectMgr, this.referencedProjectGuid);
-
+			this.isInitialized = true;
 		}
 		#endregion
 
@@ -598,7 +584,7 @@ namespace Microsoft.VisualStudio.Package
 		}
 
 		/// <summary>
-		/// Defines whether this node is valid node for painting the refererence icon.
+		/// Defines whether this node is valid node for painting the reference icon.
 		/// </summary>
 		/// <returns></returns>
 		protected override bool CanShowDefaultIcon()
@@ -657,7 +643,7 @@ namespace Microsoft.VisualStudio.Package
 		/// <returns></returns>
 		protected override bool CanAddReference(out CannotAddReferenceErrorMessage errorHandler)
 		{
-			// When this method is called this refererence has not yet been added to the hierarchy, only instantiated.
+			// When this method is called this reference has not yet been added to the hierarchy, only instantiated.
 			if (!base.CanAddReference(out errorHandler))
 			{
 				return false;
@@ -761,7 +747,86 @@ namespace Microsoft.VisualStudio.Package
 
 			return VSConstants.S_OK;
 		}
+
+		private void OnInitialized(EventArgs e)
+		{
+			var handler = this.initialized;
+			if (handler != null)
+				handler(this, e);
+		}
+
+		void ISupportInitialize.BeginInit()
+		{
+			isInitialized = false;
+		}
+
+		void ISupportInitialize.EndInit()
+		{
+			if (!isInitialized && TryFinishInit())
+			{
+				isInitialized = true;
+				OnInitialized(EventArgs.Empty);
+			}
+		}
+
+		private bool EnsureProjectGuidAndName()
+		{
+			if (this.referencedProjectGuid != Guid.Empty && !String.IsNullOrEmpty(this.referencedProjectName))
+				return true;
+
+			// Continue even if project settings cannot be read.
+			EnvDTE.Project project = ReferencedProjectObject;
+			if (null == project)
+			{
+				DropReferencedProjectCache();
+				return false;
+			}
+
+			if (this.referencedProjectGuid == Guid.Empty)
+			{
+				IVsSolution solution = this.ProjectMgr.Site.GetService(typeof(SVsSolution)) as IVsSolution;
+				//Debug.Assert(null != solution, "Could not retrieve solution object");
+				if (solution == null)
+					return false;
+				// Get the hierarchy for this project.
+				IVsHierarchy hierarchy;
+				ErrorHandler.ThrowOnFailure(solution.GetProjectOfUniqueName(project.UniqueName, out hierarchy));
+				// Get the project guid
+				ErrorHandler.ThrowOnFailure(hierarchy.GetGuidProperty(
+							VSConstants.VSITEMID_ROOT,
+							(int)__VSHPROPID.VSHPROPID_ProjectIDGuid,
+							out this.referencedProjectGuid));
+				Debug.Assert(this.referencedProjectGuid != Guid.Empty, "Could not retrieve referenced project guid from project file");
+			}
+
+			if (String.IsNullOrEmpty(this.referencedProjectName))
+			{
+				Debug.Assert(null != project, "Could not retrieve referenced project name from project file");
+				if (null == project)
+					return false;
+				this.ReferencedProjectName = project.Name;
+			}
+			return true;
+		}
+
+		private bool TryFinishInit()
+		{
+			bool result = false;
+			try
+			{
+				result = EnsureProjectGuidAndName();
+			}
+			finally
+			{
+				// Create build dependency now even if project name can not be retrieved but guid was.
+				if (this.referencedProjectGuid != Guid.Empty && this.buildDependency == null)
+				{
+					this.buildDependency = new BuildDependency(this.ProjectMgr, this.referencedProjectGuid);
+					this.ProjectMgr.AddBuildDependency(this.buildDependency);
+				}
+			}
+			return result;
+		}
 		#endregion
 	}
-
 }
