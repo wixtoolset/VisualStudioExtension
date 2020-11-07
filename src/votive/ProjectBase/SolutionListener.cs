@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Security;
-using System.Windows; 
+using System.Windows;
 using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
 using System.Drawing;
@@ -24,7 +24,7 @@ namespace Microsoft.VisualStudio.Package
 {
 
 	[CLSCompliant(false)]
-	public abstract class SolutionListener : IVsSolutionEvents3, IVsSolutionEvents4, IDisposable
+	public abstract class SolutionListener : IVsSolutionEvents3, IVsSolutionEvents4, IVsSolutionLoadEvents, IDisposable
 	{
 
 		#region fields
@@ -95,7 +95,7 @@ namespace Microsoft.VisualStudio.Package
 		{
 			return VSConstants.E_NOTIMPL;
 		}
-		
+
 		public virtual int OnAfterMergeSolution(object pUnkReserved)
 		{
 			return VSConstants.E_NOTIMPL;
@@ -177,6 +177,39 @@ namespace Microsoft.VisualStudio.Package
 		/// Fired before a project is moved from one parent to another in the solution explorer
 		/// </summary>
 		public virtual int OnQueryChangeProjectParent(IVsHierarchy hierarchy, IVsHierarchy newParentHier, ref int cancel)
+		{
+			return VSConstants.E_NOTIMPL;
+		}
+		#endregion
+
+		#region IVsSolutionLoadEvents methods
+		public virtual int OnBeforeOpenSolution(string pszSolutionFilename)
+		{
+			return VSConstants.E_NOTIMPL;
+		}
+
+		public virtual int OnBeforeBackgroundSolutionLoadBegins()
+		{
+			return VSConstants.E_NOTIMPL;
+		}
+
+		public virtual int OnQueryBackgroundLoadProjectBatch(out bool pfShouldDelayLoadToNextIdle)
+		{
+			pfShouldDelayLoadToNextIdle = false;
+			return VSConstants.E_NOTIMPL;
+		}
+
+		public virtual int OnBeforeLoadProjectBatch(bool fIsBackgroundIdleBatch)
+		{
+			return VSConstants.E_NOTIMPL;
+		}
+
+		public virtual int OnAfterLoadProjectBatch(bool fIsBackgroundIdleBatch)
+		{
+			return VSConstants.E_NOTIMPL;
+		}
+
+		public virtual int OnAfterBackgroundSolutionLoadComplete()
 		{
 			return VSConstants.E_NOTIMPL;
 		}
