@@ -1931,7 +1931,13 @@ namespace Microsoft.VisualStudio.Package
             {
                 Array contextParamsAsArray = contextParams;
 
-                int result = ivsExtensibility.RunWizardFile(wizardToRun, (int)dlgOwner, ref contextParamsAsArray, out wizResultAsInt);
+                int result = ivsExtensibility.RunWizardFile(wizardToRun,
+#if VS2022
+                    dlgOwner
+#else
+                    (int)dlgOwner
+#endif
+                    , ref contextParamsAsArray, out wizResultAsInt);
 
                 if (!ErrorHandler.Succeeded(result) && result != VSConstants.OLE_E_PROMPTSAVECANCELLED)
                 {

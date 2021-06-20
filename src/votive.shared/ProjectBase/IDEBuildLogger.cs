@@ -18,6 +18,11 @@ using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TextManager.Interop;
 using Microsoft.Win32;
 using IOleServiceProvider = Microsoft.VisualStudio.OLE.Interop.IServiceProvider;
+#if VS2022
+using TaskListItem = Microsoft.VisualStudio.Shell.TaskListItem;
+#else
+using TaskListItem = Microsoft.VisualStudio.Shell.Task;
+#endif
 
 namespace Microsoft.VisualStudio.Package
 {
@@ -561,7 +566,7 @@ namespace Microsoft.VisualStudio.Package
         /// <param name="arguments"></param>
         private void NavigateTo(object sender, EventArgs arguments)
         {
-            Microsoft.VisualStudio.Shell.Task task = sender as Microsoft.VisualStudio.Shell.Task;
+            TaskListItem task = sender as TaskListItem;
             if (task == null)
             {
                 throw new ArgumentException("sender");
