@@ -7,10 +7,8 @@
     <AssemblyName>Votive2022</AssemblyName>
     <ShouldSignOutput>true</ShouldSignOutput>
     <VsixType>v3</VsixType>
-
     <CopyBuildOutputToOutputDirectory>false</CopyBuildOutputToOutputDirectory>
     <CopyOutputSymbolsToOutputDirectory>false</CopyOutputSymbolsToOutputDirectory>
-
     <IncludeAssemblyInVSIXContainer>false</IncludeAssemblyInVSIXContainer>
     <GeneratePkgDefFile>false</GeneratePkgDefFile>
     <CopyVsixManifestToOutput>false</CopyVsixManifestToOutput>
@@ -23,7 +21,6 @@
   <PropertyGroup>
     <DefineConstants>$(DefineConstants);VS2022</DefineConstants>
   </PropertyGroup>
-
   <Import Project="..\..\tools\WixBuild.csproj.props" />
   <ItemGroup>
     <None Include="source.extension.vsixmanifest" />
@@ -65,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Build" />
+    <Reference Include="Microsoft.Build.Conversion.v4.0" />
     <Reference Include="Microsoft.Build.Engine" />
     <Reference Include="Microsoft.Build.Utilities.v4.0" />
     <Reference Include="PresentationFramework" />

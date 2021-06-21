@@ -22,8 +22,8 @@
     </InstallationTarget>
   </Installation>
   <Assets>
-    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="votive" Path="|votive;PkgdefProjectOutputGroup|" />
-    <Asset Type="Microsoft.VisualStudio.Assembly" d:Source="Project" d:ProjectName="votive" Path="|votive|" AssemblyName="|votive;AssemblyName|" />
+    <!-- <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="votive" Path="|votive;PkgdefProjectOutputGroup|" />
+    <Asset Type="Microsoft.VisualStudio.Assembly" d:Source="Project" d:ProjectName="votive" Path="|votive|" AssemblyName="|votive;AssemblyName|" /> -->
     <Asset Type="Microsoft.VisualStudio.ProjectTemplate" Path="ProjectTemplates" />
     <Asset Type="Microsoft.VisualStudio.ItemTemplate" Path="ItemTemplates" />
   </Assets>

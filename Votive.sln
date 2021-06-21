@@ -37,6 +37,7 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "votive.shared", "src\votive
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		src\votive.shared\votive.shared.projitems*{24a98296-9d58-42c1-95c0-cc36736409e2}*SharedItemsImports = 4
 		src\votive.shared\votive.shared.projitems*{74dc275b-ee4b-420f-b2e4-fc49ab47935a}*SharedItemsImports = 13
 		src\votive.shared\votive.shared.projitems*{d8ca1e7c-8481-4120-b4f4-511644129577}*SharedItemsImports = 4
 	EndGlobalSection

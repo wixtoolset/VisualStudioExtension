@@ -229,8 +229,11 @@ namespace Microsoft.VisualStudio.Package
             {
                 this.active = true;
 
-
+#if VS2022
+                Control cGrid = Control.FromHandle(this.grid.Handle);
+#else
                 Control cGrid = Control.FromHandle(new IntPtr(this.grid.Handle));
+#endif
 
                 cGrid.Parent = Control.FromHandle(parent);//this.panel;
                 cGrid.Size = new Size(544, 294);
@@ -238,7 +241,11 @@ namespace Microsoft.VisualStudio.Package
                 cGrid.Visible = true;
                 this.grid.SetOption(_PROPERTYGRIDOPTION.PGOPT_TOOLBAR, false);
                 this.grid.GridSort = _PROPERTYGRIDSORT.PGSORT_CATEGORIZED | _PROPERTYGRIDSORT.PGSORT_ALPHABETICAL;
+#if VS2022
+                NativeMethods.SetParent(this.grid.Handle, this.panel.Handle);
+#else
                 NativeMethods.SetParent(new IntPtr(this.grid.Handle), this.panel.Handle);
+#endif
                 UpdateObjects();
             }
         }
@@ -413,8 +420,12 @@ namespace Microsoft.VisualStudio.Package
                 {
                     Marshal.WriteIntPtr(ppUnk, p);
                     this.BindProperties();
+#if VS2022
+                    this.grid.SetSelectedObjects(1, new [] { ppUnk });
+#else
                     // BUGBUG -- this is really bad casting a pointer to "int"...
                     this.grid.SetSelectedObjects(1, ppUnk.ToInt32());
+#endif
                     this.grid.Refresh();
                 }
                 finally

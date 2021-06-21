@@ -1113,7 +1113,11 @@ namespace Microsoft.VisualStudio.Package
 				bstrExe = targetInfo.bstrExe,
 				bstrPortName = targetInfo.bstrPortName,
 				bstrRemoteMachine = targetInfo.bstrRemoteMachine,
+#if VS2022
+				fSendToOutputWindow = targetInfo.fSendStdoutToOutputWindow == 1,
+#else
 				fSendToOutputWindow = targetInfo.fSendStdoutToOutputWindow,
+#endif
 				guidLaunchDebugEngine = targetInfo.clsidCustom,
 				LaunchFlags = targetInfo.grfLaunch,
 				dlo = (uint)targetInfo.dlo,
