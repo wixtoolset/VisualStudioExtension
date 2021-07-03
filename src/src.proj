@@ -9,6 +9,7 @@
     <ProjectReference Include="Votive2015\Votive2015.csproj" />
     <ProjectReference Include="Votive2017\Votive2017.csproj" />
     <ProjectReference Include="Votive2019\Votive2019.csproj" />
+    <!-- <ProjectReference Include="Votive2022\Votive2022.csproj" /> -->
   </ItemGroup>
 
   <Import Project="..\tools\Traversal.targets" />
