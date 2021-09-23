@@ -561,7 +561,11 @@ namespace Microsoft.VisualStudio.Package
         /// <param name="arguments"></param>
         private void NavigateTo(object sender, EventArgs arguments)
         {
+#if Dev17
+            Microsoft.VisualStudio.Shell.TaskListItem task = sender as Microsoft.VisualStudio.Shell.TaskListItem;
+#else
             Microsoft.VisualStudio.Shell.Task task = sender as Microsoft.VisualStudio.Shell.Task;
+#endif
             if (task == null)
             {
                 throw new ArgumentException("sender");

@@ -127,6 +127,11 @@ namespace Microsoft.VisualStudio.Package
 		public static bool IsVisualStudioInDesignMode(IServiceProvider site)
 		{
 			IVsMonitorSelection selectionMonitor = site.GetService(typeof(IVsMonitorSelection)) as IVsMonitorSelection;
+			if (selectionMonitor == null)
+			{
+				return false;
+			}
+
 			uint cookie = 0;
 			int active = 0;
 			Guid designContext = VSConstants.UICONTEXT_DesignMode;

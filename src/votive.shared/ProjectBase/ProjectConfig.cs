@@ -1113,7 +1113,11 @@ namespace Microsoft.VisualStudio.Package
 				bstrExe = targetInfo.bstrExe,
 				bstrPortName = targetInfo.bstrPortName,
 				bstrRemoteMachine = targetInfo.bstrRemoteMachine,
+#if Dev17
+				fSendToOutputWindow = targetInfo.fSendStdoutToOutputWindow != 0,
+#else
 				fSendToOutputWindow = targetInfo.fSendStdoutToOutputWindow,
+#endif
 				guidLaunchDebugEngine = targetInfo.clsidCustom,
 				LaunchFlags = targetInfo.grfLaunch,
 				dlo = (uint)targetInfo.dlo,
