@@ -48,6 +48,7 @@ namespace WixToolset.VisualStudioExtension
         private WixPackage package;
         private bool showAllFilesEnabled;
 
+        private MSBuild.ProjectCollection userBuildProjectCollection;
         private MSBuild.Project userBuildProject;
 
         // =========================================================================================
@@ -342,16 +343,16 @@ namespace WixToolset.VisualStudioExtension
         {
             if (File.Exists(this.UserFileName))
             {
-                // Create the project from an XmlReader so that this file is
-                // not checked for being dirty when closing the project.
+                // Create the project in a new project collection so that this 
+                // file is not checked for being dirty when closing the project.
                 // If loaded directly from the file, Visual Studio will display
                 // a save changes dialog if any changes are made to the user
                 // project since it will have been added to the global project
                 // collection. Loading from an XmlReader will prevent the 
                 // project from being added to the global project collection
                 // and thus prevent the save changes dialog on close.
-                System.Xml.XmlReader xmlReader = System.Xml.XmlReader.Create(this.UserFileName);
-                this.userBuildProject = new MSBuild.Project(xmlReader);
+                this.userBuildProjectCollection = new MSBuild.ProjectCollection(this.BuildProject.GlobalProperties);
+                this.userBuildProject = new MSBuild.Project(this.UserFileName, this.BuildProject.GlobalProperties, this.BuildProject.ToolsVersion, this.userBuildProjectCollection);
             }
             else
             {
