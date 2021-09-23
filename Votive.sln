@@ -31,7 +31,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		version.json = version.json
 	EndProjectSection
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "votive.shared", "src\votive.shared\votive.shared.shproj", "{72A14880-EC19-43B4-A4F0-DC9DDAE2C763}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		src\votive.shared\votive.shared.projitems*{24a98296-9d58-42c1-95c0-cc36736409e2}*SharedItemsImports = 4
+		src\votive.shared\votive.shared.projitems*{72a14880-ec19-43b4-a4f0-dc9ddae2c763}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|arm = Debug|arm
