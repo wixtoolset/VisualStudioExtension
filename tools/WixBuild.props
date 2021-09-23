@@ -35,7 +35,7 @@
     <Configuration>Debug</Configuration>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' or '$(WixFlavor)' == 'release' ">
-    <WixFlavor>Release</WixFlavor>
+    <WixFlavor>release</WixFlavor>
     <Configuration>Release</Configuration>
   </PropertyGroup>
 
@@ -98,8 +98,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <BaseIntermediateOutputPath>$(WIX_OBJROOT)$(WixFlavor)\$(NormalizedPlatform)\</BaseIntermediateOutputPath>
-    <IntermediateOutputPath>$(BaseIntermediateOutputPath)$(MSBuildProjectName)\</IntermediateOutputPath>
+    <BaseIntermediateOutputPath>$(WIX_OBJROOT)common\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+    <IntermediateOutputPath>$(WIX_OBJROOT)$(WixFlavor)\$(NormalizedPlatform)\$(MSBuildProjectName)\</IntermediateOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
