@@ -80,7 +80,6 @@ namespace WixToolset.VisualStudioExtension.PropertyPages
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.mainTableLayoutPanel);
             this.MinimumSize = new System.Drawing.Size(344, 447);
             this.Name = "WixPathsPropertyPagePanel";
