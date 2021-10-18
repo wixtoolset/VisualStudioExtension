@@ -141,7 +141,7 @@ namespace Microsoft.VisualStudio.Package
 
         private void DoAdd(string itemType, string itemPath)
         {
-            var added = this.itemProject.BuildProject.AddItem(itemType, Microsoft.Build.BuildEngine.Utilities.Escape(itemPath));
+            var added = this.itemProject.BuildProject.AddItem(itemType, MSBuild.ProjectCollection.Escape(itemPath));
             Debug.Assert(added.Count == 1, "adding a file created more than 1 new item, should not be possible since we escape wildcard characters");
             this.item = added[0];
         }
@@ -335,7 +335,7 @@ namespace Microsoft.VisualStudio.Package
 
         public void Rename(string newPath)
         {
-            string escapedPath = Microsoft.Build.BuildEngine.Utilities.Escape(newPath);
+            string escapedPath = MSBuild.ProjectCollection.Escape(newPath);
             if (this.IsVirtual)
             {
                 virtualProperties[ProjectFileConstants.Include] = newPath;

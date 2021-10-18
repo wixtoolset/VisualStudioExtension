@@ -10,7 +10,6 @@ namespace WixToolset.VisualStudioExtension
     using System.Text;
 
     using EnvDTE;
-    using Microsoft.Build.BuildEngine;
     using Microsoft.Build.Execution;
     using Microsoft.VisualStudio;
     using Microsoft.VisualStudio.Package;

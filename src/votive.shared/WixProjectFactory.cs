@@ -59,7 +59,7 @@ namespace WixToolset.VisualStudioExtension
         [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration", MessageId = "5#", Justification = "Suppressing to avoid conflict with style cop.")]
         [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration", MessageId = "6#", Justification = "Suppressing to avoid conflict with style cop.")]
         [SuppressMessage("Microsoft.Usage", "CA1806:DoNotIgnoreMethodResults", Scope = "member")]
-        public override int UpgradeProject(string fileName, uint upgradeFlag, string copyLocation, out string upgradedFullyQualifiedFileName, IVsUpgradeLogger logger, out int upgradeRequired, out Guid newProjectFactory)
+        public virtual int UpgradeProject(string fileName, uint upgradeFlag, string copyLocation, out string upgradedFullyQualifiedFileName, IVsUpgradeLogger logger, out int upgradeRequired, out Guid newProjectFactory)
         {
             uint ignore;
             string projectName = Path.GetFileNameWithoutExtension(fileName);
@@ -188,7 +188,7 @@ namespace WixToolset.VisualStudioExtension
         [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration", MessageId = "2#", Justification = "Suppressing to avoid conflict with style cop.")]
         [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration", MessageId = "3#", Justification = "Suppressing to avoid conflict with style cop.")]
         [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration", MessageId = "4#", Justification = "Suppressing to avoid conflict with style cop.")]
-        public override int UpgradeProject_CheckOnly(string fileName, IVsUpgradeLogger logger, out int upgradeRequired, out Guid newProjectFactory, out uint upgradeProjectCapabilityFlags)
+        public virtual int UpgradeProject_CheckOnly(string fileName, IVsUpgradeLogger logger, out int upgradeRequired, out Guid newProjectFactory, out uint upgradeProjectCapabilityFlags)
         {
             upgradeRequired = 0;
             newProjectFactory = this.GetType().GUID;
@@ -271,7 +271,7 @@ namespace WixToolset.VisualStudioExtension
         [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration", MessageId = "2#", Justification = "Suppressing to avoid conflict with style cop.")]
         [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration", MessageId = "3#", Justification = "Suppressing to avoid conflict with style cop.")]
         [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration", MessageId = "4#", Justification = "Suppressing to avoid conflict with style cop.")]
-        public override int GetSccInfo(string projectFileName, out string sccProjectName, out string sccAuxPath, out string sccLocalPath, out string sccProvider)
+        public virtual int GetSccInfo(string projectFileName, out string sccProjectName, out string sccAuxPath, out string sccLocalPath, out string sccProvider)
         {
             sccProjectName = String.Empty;
             sccAuxPath = String.Empty;

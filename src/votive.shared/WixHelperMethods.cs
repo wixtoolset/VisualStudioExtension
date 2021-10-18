@@ -17,7 +17,6 @@ namespace WixToolset.VisualStudioExtension
     using System.Windows.Forms;
     using System.Xml;
     using System.Xml.Schema;
-    using Microsoft.Build.BuildEngine;
     using Microsoft.VisualStudio;
     using Microsoft.VisualStudio.Package;
     using Microsoft.VisualStudio.Shell;

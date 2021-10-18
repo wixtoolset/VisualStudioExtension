@@ -11,7 +11,6 @@ namespace WixToolset.VisualStudioExtension
     using System.IO;
     using System.Runtime.InteropServices;
     using System.Text;
-    using Microsoft.Build.BuildEngine;
     using Microsoft.VisualStudio;
     using Microsoft.VisualStudio.Package;
     using Microsoft.VisualStudio.Package.Automation;

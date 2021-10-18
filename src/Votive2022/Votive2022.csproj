@@ -30,14 +30,20 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup Label="Suppressed items">
-    <SuppressFromVsix Include="Microsoft.NET.StringTools.dll" />
-    <SuppressFromVsix Include="Microsoft.VisualStudio.TextTemplating.dll" />
-    <SuppressFromVsix Include="Microsoft.VisualStudio.TextTemplating.Interfaces.dll" />
-    <SuppressFromVsix Include="Microsoft.VisualStudio.TextTemplating.VSHost.dll" />
-    <SuppressFromVsix Include="System.Configuration.ConfigurationManager.dll" />
-    <SuppressFromVsix Include="System.Security.Permissions.dll" />
-    <SuppressFromVsix Include="System.Text.Encodings.Web.dll" />
-    <SuppressFromVsix Include="System.Text.Json.dll" />
+    <SuppressFromVsix Include="Microsoft.Bcl.AsyncInterfaces.dll" Visible="false" />
+    <SuppressFromVsix Include="Microsoft.NET.StringTools.dll" Visible="false" />
+    <SuppressFromVsix Include="Microsoft.VisualStudio.TextTemplating.dll" Visible="false" />
+    <SuppressFromVsix Include="Microsoft.VisualStudio.TextTemplating.Interfaces.dll" Visible="false" />
+    <SuppressFromVsix Include="Microsoft.VisualStudio.TextTemplating.VSHost.dll" Visible="false" />
+    <SuppressFromVsix Include="Microsoft.VisualStudio.RpcContracts.dll" Visible="false" />
+    <SuppressFromVsix Include="System.Buffers.dll" Visible="false" />
+    <SuppressFromVsix Include="System.Configuration.ConfigurationManager.dll" Visible="false" />
+    <SuppressFromVsix Include="System.IO.Pipelines.dll" Visible="false" />
+    <SuppressFromVsix Include="System.Memory.dll" Visible="false" />
+    <SuppressFromVsix Include="System.Numerics.Vectors.dll" Visible="false" />
+    <SuppressFromVsix Include="System.Security.Permissions.dll" Visible="false" />
+    <SuppressFromVsix Include="System.Text.Encodings.Web.dll" Visible="false" />
+    <SuppressFromVsix Include="System.Text.Json.dll" Visible="false" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Schemas\v3\v3schemas.csproj">
@@ -59,10 +65,10 @@
     <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Build.Conversion.Core" Version="16.11.0" />
+    <PackageReference Include="Microsoft.Build" Version="16.11.0" />
     <PackageReference Include="Microsoft.Build.Utilities.Core" Version="16.11.0" />
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.0-previews-4-31709-430" />
-    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.0.5217-preview5" />
+    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.0.5232" />
     <PackageReference Include="Nerdbank.GitVersioning" Version="2.2.33" />
   </ItemGroup>
   <ItemGroup>

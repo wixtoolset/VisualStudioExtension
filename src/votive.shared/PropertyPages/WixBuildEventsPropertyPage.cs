@@ -6,7 +6,6 @@ namespace WixToolset.VisualStudioExtension.PropertyPages
     using System.Globalization;
     using System.Runtime.InteropServices;
     using System.Windows.Forms;
-    using Microsoft.Build.BuildEngine;
     using Microsoft.VisualStudio;
     using Microsoft.VisualStudio.Package;
 

@@ -9,8 +9,7 @@ namespace WixToolset.VisualStudioExtension
     using System.IO;
     using System.Runtime.InteropServices;
     using System.Text;
-    using Microsoft.Build.BuildEngine;
-	using MSBuild = Microsoft.Build.Evaluation;
+    using MSBuild = Microsoft.Build.Evaluation;
 	using MSBuildConstruction = Microsoft.Build.Construction;
     using Microsoft.VisualStudio;
     using Microsoft.VisualStudio.Package;

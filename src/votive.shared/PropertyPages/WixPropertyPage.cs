@@ -13,7 +13,6 @@ namespace WixToolset.VisualStudioExtension.PropertyPages
     using System.Reflection;
     using System.Runtime.InteropServices;
     using System.Windows.Forms;
-    using Microsoft.Build.BuildEngine;
     using Microsoft.VisualStudio;
     using Microsoft.VisualStudio.OLE.Interop;
     using Microsoft.VisualStudio.Package;

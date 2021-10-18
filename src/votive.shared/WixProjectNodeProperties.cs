@@ -8,7 +8,6 @@ namespace WixToolset.VisualStudioExtension
     using System.IO;
     using System.Runtime.InteropServices;
     using System.Globalization;
-    using Microsoft.Build.BuildEngine;
     using Microsoft.VisualStudio.Package;
     using Utilities = Microsoft.VisualStudio.Package.Utilities;
     using VSConstants = Microsoft.VisualStudio.VSConstants;

@@ -20,7 +20,6 @@ using Microsoft.VisualStudio.Package.Automation;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Shell;
 using System.Net;
-using MSBuild = Microsoft.Build.BuildEngine;
 using MSBuildExecution = Microsoft.Build.Execution;
 using MSBuildConstruction = Microsoft.Build.Construction;
 using IOleServiceProvider = Microsoft.VisualStudio.OLE.Interop.IServiceProvider;
