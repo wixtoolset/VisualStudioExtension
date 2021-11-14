@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+  <PropertyGroup>
+    <ProjectGuid>{29A5BBF6-AEDB-4867-92F6-C0F560F3AABF}</ProjectGuid>
+    <ProjectTypeGuids>{82b43b9b-a64c-4715-b499-d71e9ca2bd60};{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>WixToolset.VisualStudioExtension</RootNamespace>
+    <AssemblyName>Votive2022</AssemblyName>
+    <ShouldSignOutput>true</ShouldSignOutput>
+    <GeneratePkgDefFile>true</GeneratePkgDefFile>
+    <CopyZipOutputToOutputDirectory>true</CopyZipOutputToOutputDirectory>
+    <CopyVsixManifestToOutput>false</CopyVsixManifestToOutput>
+    <DeployExtension>false</DeployExtension>
+    <DeployVSTemplates>false</DeployVSTemplates>
+    <UseCodebase>true</UseCodebase>
+    <VsTemplateLanguage>WiX</VsTemplateLanguage>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <DefineConstants>Dev17</DefineConstants>
+    <NoWarn>VSTHRD001,VSTHRD010,VSSDK006,VSTHRD110,VSTHRD200,VSSDK006,RS0030</NoWarn>
+  </PropertyGroup>
+  <Import Project="..\..\tools\WixBuild.csproj.props" />
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.XML" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup Label="Suppressed items">
+    <SuppressFromVsix Include="Microsoft.Bcl.AsyncInterfaces.dll" Visible="false" />
+    <SuppressFromVsix Include="Microsoft.NET.StringTools.dll" Visible="false" />
+    <SuppressFromVsix Include="Microsoft.VisualStudio.TextTemplating.dll" Visible="false" />
+    <SuppressFromVsix Include="Microsoft.VisualStudio.TextTemplating.Interfaces.dll" Visible="false" />
+    <SuppressFromVsix Include="Microsoft.VisualStudio.TextTemplating.VSHost.dll" Visible="false" />
+    <SuppressFromVsix Include="Microsoft.VisualStudio.RpcContracts.dll" Visible="false" />
+    <SuppressFromVsix Include="System.Buffers.dll" Visible="false" />
+    <SuppressFromVsix Include="System.Configuration.ConfigurationManager.dll" Visible="false" />
+    <SuppressFromVsix Include="System.IO.Pipelines.dll" Visible="false" />
+    <SuppressFromVsix Include="System.Memory.dll" Visible="false" />
+    <SuppressFromVsix Include="System.Numerics.Vectors.dll" Visible="false" />
+    <SuppressFromVsix Include="System.Security.Permissions.dll" Visible="false" />
+    <SuppressFromVsix Include="System.Text.Encodings.Web.dll" Visible="false" />
+    <SuppressFromVsix Include="System.Text.Json.dll" Visible="false" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Schemas\v3\v3schemas.csproj">
+      <Project>{d0dd12d1-3455-43a9-9173-e465da045897}</Project>
+      <Name>v3schemas</Name>
+      <IncludeOutputGroupsInVSIX>GetCopyToOutputDirectoryItems%3bVSIXContainerProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+      <VSIXSubPath>Schemas</VSIXSubPath>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\Schemas\v4\v4schemas.csproj">
+      <Project>{587d2a86-66cf-46b4-98c8-c01e20f1076d}</Project>
+      <Name>v4schemas</Name>
+      <VSIXSubPath>Schemas</VSIXSubPath>
+      <IncludeOutputGroupsInVSIX>GetCopyToOutputDirectoryItems%3bVSIXContainerProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build" Version="17.0.0" />
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.31902.203" />
+    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.0.5232" />
+    <PackageReference Include="Nerdbank.GitVersioning" Version="2.2.33" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="source.extension.vsixmanifest" />
+    <Content Include="WixLogoDev17.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+  </ItemGroup>
+  <Import Project="..\votive.shared\votive.shared.projitems" Label="Shared" />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="..\..\Tools\WixBuild.csproj.targets" />
+  <!-- This target is needed to include the project and item templates in the VSIX container. -->
+  <PropertyGroup>
+    <GetVsixSourceItemsDependsOn>$(GetVsixSourceItemsDependsOn);GetVsixTemplateItems</GetVsixSourceItemsDependsOn>
+  </PropertyGroup>
+  <Target Name="GetVsixTemplateItems" DependsOnTargets="ZipProjects;ZipItems">
+    <ItemGroup>
+      <_ProjectTemplates Include="$(OutputPath)ProjectTemplates\**" />
+      <_ItemTemplates Include="$(OutputPath)ItemTemplates\**" />
+      <VSIXSourceItem Include="@(_ProjectTemplates)">
+        <VSIXSubPath>ProjectTemplates\%(RecursiveDir)</VSIXSubPath>
+      </VSIXSourceItem>
+      <VSIXSourceItem Include="@(_ItemTemplates)">
+        <VSIXSubPath>ItemTemplates\%(RecursiveDir)</VSIXSubPath>
+      </VSIXSourceItem>
+    </ItemGroup>
+  </Target>
+</Project>

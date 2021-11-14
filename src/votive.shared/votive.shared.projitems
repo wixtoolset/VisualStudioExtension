@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>72a14880-ec19-43b4-a4f0-dc9ddae2c763</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>WixToolset.VisualStudioExtension</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\Misc\ConnectionPointContainer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\Misc\ExternDll.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\Misc\NativeMethods.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\Misc\UnsafeNativeMethods.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\AssemblyReferenceNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\Attributes.cs" />
+    <!-- Automation Objects -->
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\OAFileItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\OAFolderItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\OANestedProjectItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\OANullProperty.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\OAProject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\OAProjectItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\OAProjectItems.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\OAProperties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\OAProperty.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\OANavigableProjectItems.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\OAReferenceFolderItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\OAReferenceItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\OASolutionFolder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Objects needed to implement a Language Project -->
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\LangProj\OAAssemblyReference.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\LangProj\OABuildManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\LangProj\OAComReference.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\LangProj\OAProjectReference.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\LangProj\OAReferenceBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\LangProj\OAReferences.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\LangProj\OAVSProject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\LangProj\OAVSProjectItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\BuildDependency.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\BuildPropertyPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\ComReferenceNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\ConfigProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\ConfigurationProperties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\DataObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\DesignPropertyDescriptor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\DocumentManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\EnumDependencies.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\FileChangeManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\FileDocumentManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\FileNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\DependentFileNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\FolderNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\GlobalSuppressions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\HierarchyNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\ImageHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\Interfaces.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\IDEBuildLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\LocalizableProperties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\Microsoft.VisualStudio.Package.Project.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\NestedProjectBuildDependency.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\NestedProjectNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\NodeProperties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\OleServiceProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\Output.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\OutputGroup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\ProjectConfig.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\ProjectContainerNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\ProjectDesignerDocumentManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\ProjectElement.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\ProjectFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\ProjectFileConstants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\ProjectNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\ProjectNode.CopyPaste.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\ProjectNode.Events.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\ProjectOptions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\ProjectPackage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\ProjectReferenceNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\PropertiesEditorLauncher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\ReferenceContainerNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\ReferenceNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\RegisteredProjectType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\SettingsPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\SingleFileGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\SingleFileGeneratorFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\SolutionListener.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\SolutionListenerForBuildDependencyUpdate.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\SolutionListenerForProjectEvents.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\SolutionListenerForProjectOpen.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\SolutionListenerForProjectReferenceUpdate.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\StructuresEnums.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\SuspendFileChanges.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\Tracing.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\TokenProcessor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\TrackDocumentsHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\TypeConverters.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\Url.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\Utilities.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\VsCommands.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\VSMDCodeDomProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\VSShellUtilities.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\SelectionListener.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\ProjectDocumentsListener.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectBase\UpdateSolutionEventsListener.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)DontShowAgainDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)DontShowAgainDialog.Designer.cs">
+      <DependentUpon>DontShowAgainDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)FileOverwriteDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)FileOverwriteDialog.Designer.cs">
+      <DependentUpon>FileOverwriteDialog.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)DontShowAgainDialog.resx">
+      <DependentUpon>DontShowAgainDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)FileOverwriteDialog.resx">
+      <DependentUpon>FileOverwriteDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Microsoft.VisualStudio.Package.Project.resx">
+      <LogicalName>Microsoft.VisualStudio.Package.Project.resources</LogicalName>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\imagelis.bmp">
+      <LogicalName>Resources.imagelis.bmp</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\FolderBrowserTextBox.cs">
+      <SubType>UserControl</SubType>
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\FolderBrowserTextBox.Designer.cs">
+      <DependentUpon>FolderBrowserTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\WixBuildEventEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\WixBuildEventEditor.Designer.cs">
+      <DependentUpon>WixBuildEventEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\WixBuildEventTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\WixFoldersSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\WixFoldersSelector.Designer.cs">
+      <DependentUpon>WixFoldersSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\WixGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\WixGroupLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\WixColorUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\WixColorUserControl.Designer.cs">
+      <DependentUpon>WixColorUserControl.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controls\WixColorUserControl.resx">
+      <DependentUpon>WixColorUserControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="$(MSBuildThisFileDirectory)Forms\WixBuildEventEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Forms\WixBuildEventEditorForm.Designer.cs">
+      <DependentUpon>WixBuildEventEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)PropertyPages\WixBuildEventsPropertyPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PropertyPages\WixBuildEventsPropertyPagePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)PropertyPages\WixBuildEventsPropertyPagePanel.Designer.cs">
+      <DependentUpon>WixBuildEventsPropertyPagePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)PropertyPages\WixInstallerPropertyPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IProjectSourceNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PropertyPages\WixInstallerPropertyPagePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)PropertyPages\WixInstallerPropertyPagePanel.Designer.cs">
+      <DependentUpon>WixInstallerPropertyPagePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)PropertyPages\WixBuildPropertyPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PropertyPages\WixBuildPropertyPagePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)PropertyPages\WixBuildPropertyPagePanel.Designer.cs">
+      <DependentUpon>WixBuildPropertyPagePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)PropertyPages\WixPathsPropertyPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PropertyPages\WixPathsPropertyPagePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)PropertyPages\WixPathsPropertyPagePanel.Designer.cs">
+      <DependentUpon>WixPathsPropertyPagePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)PropertyPages\WixPropertyPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PropertyPages\WixPropertyPagePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)PropertyPages\WixPropertyPagePanel.Designer.cs">
+      <DependentUpon>WixPropertyPagePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)PropertyPages\WixToolsSettingsPropertyPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PropertyPages\WixToolsSettingsPropertyPagePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)PropertyPages\WixToolsSettingsPropertyPagePanel.Designer.cs">
+      <DependentUpon>WixToolsSettingsPropertyPagePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)GlobalSuppressions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IsolatedDomain.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OAWixProject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectPropertyArgumentException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProjectProperty.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PropertyValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FileSearchHelperMethods.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RunPostBuildEvent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixBuildMacroCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixConfigProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixDesignPropertyDescriptor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixFileNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixFileNodeProperties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixLinkedFileNodeProperties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixFileNodeNonMemberProperties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixExtensionReferenceNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixExtensionReferenceNodeProperties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixReferenceContainerNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixReferenceValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixFolderNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixFolderNodeNonMemberProperties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixFolderNodeProperties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixLibraryReferenceNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixLibraryReferenceNodeProperties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixLocalizedCategoryAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixLocalizedControlTextAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixLocalizedDescriptionAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixLocalizedDisplayNameAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixNonMemberDesignPropertyDescriptor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixOutputType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixPackageSettings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixProjectConfig.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixProjectFileConstants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixProjectNodeProperties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixProjectReferenceNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixProjectReferenceNodeProperties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixHelperMethods.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixProjectNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixProjectMembers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixProjectFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixPackage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixReferenceNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixReferenceNodeProperties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixVsConstants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WixWarningLevel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)WixStrings.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LogicalName>$(RootNamespace).WixStrings.resources</LogicalName>
+      <MergeWithCTO>true</MergeWithCTO>
+    </EmbeddedResource>
+    <Compile Include="$(MSBuildThisFileDirectory)WixStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WixStrings.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controls\FolderBrowserTextBox.resx">
+      <DependentUpon>FolderBrowserTextBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controls\WixBuildEventEditor.resx">
+      <DependentUpon>WixBuildEventEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Forms\WixBuildEventEditorForm.resx">
+      <DependentUpon>WixBuildEventEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)PropertyPages\WixBuildEventsPropertyPagePanel.resx">
+      <DependentUpon>WixBuildEventsPropertyPagePanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)PropertyPages\WixBuildPropertyPagePanel.resx">
+      <DependentUpon>WixBuildPropertyPagePanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controls\WixFoldersSelector.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WixFoldersSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)PropertyPages\WixPropertyPagePanel.resx">
+      <DependentUpon>WixPropertyPagePanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controls\WixBuildEventTextBox.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WixBuildEventTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controls\WixGroupBox.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WixGroupBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controls\WixGroupLabel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WixGroupLabel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)PropertyPages\WixInstallerPropertyPagePanel.resx">
+      <DependentUpon>WixInstallerPropertyPagePanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)PropertyPages\WixPathsPropertyPagePanel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WixPathsPropertyPagePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)PropertyPages\WixToolsSettingsPropertyPagePanel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WixToolsSettingsPropertyPagePanel.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Resources\Package.ico" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\ProjectFile.ico" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\Delete.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\DownArrow.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\Macro.ico" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\Splash.bmp" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\UpArrow.png" />
+  </ItemGroup>
+</Project>
