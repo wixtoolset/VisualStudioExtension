@@ -49,7 +49,7 @@ for:
 
   environment:
     KeyPairDownloadToken:
-      secure: U5OkonXbnqz0MB5NLRcfxbJyt5ZSAlKYbaJbs1z4qX3EuLHX83tMQvW7Kgf594jPsw7NZqAYepUCJTLuyr3vazJsuHO1p5A4AHyCiRjqxG+8nI4937EhbWtsxqrEnUttrs2M/6jLKOTk6fvJv7zkXFiEfur1JHnJNb3Moe2jQvBVBe1WoCYGTJqo1eSQccnD
+      secure: 7Ljr2ck3XpBKJ+M0rvjr8h0JfKTwvroY/KRMlpOf2YOLD4VqJnFS2nNwazMdP/f+dL1rEqwMNEgufd20gMMe2ZwMH32XMi4Xoe9i7j1pVa52eUaMMw//+XD6hoaDUZ008TMMkzQXK5rKu66c4E1OmcJ0BbAw3gJPzRkncOZpHP5aNinCJGNQILLaPGXuAcZj
     PleaseSignOutput: true
     SignClientUser:
       secure: s+b2kuhi/AlE8ZYFsNVHFLfgJOwi0fIKMCOP+xL++8U=
