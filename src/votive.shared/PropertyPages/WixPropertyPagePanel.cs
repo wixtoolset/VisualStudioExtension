@@ -43,12 +43,7 @@ namespace WixToolset.VisualStudioExtension.PropertyPages
             this.InitializeComponent();
 
             this.Font = WixHelperMethods.GetDialogFont();
-#if Dev17
-             // VS2022 doesn't use theming on property pages
-            this.BackColor = SystemColors.Control;
-#else
             this.BackColor = WixHelperMethods.GetVsColor(WixHelperMethods.Vs2010Color.VSCOLOR_BUTTONFACE);
-#endif
             this.ForeColor = WixHelperMethods.GetVsColor(WixHelperMethods.Vs2010Color.VSCOLOR_BUTTONTEXT);
         }
 

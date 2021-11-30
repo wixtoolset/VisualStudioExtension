@@ -678,8 +678,7 @@ namespace WixToolset.VisualStudioExtension
         internal static void SetSingleControlColors(Control control)
         {
             control.ForeColor = GetVsColor(Vs2010Color.VSCOLOR_BUTTONTEXT);
-            if (control is TextBox || control is ListBox || control is ListView || control is ComboBox ||
-                control is WixBuildEventTextBox)
+            if (control is TextBox || control is ListBox || control is ListView || control is ComboBox)
             {
                 control.BackColor = GetVsColor(Vs2010Color.VSCOLOR_WINDOW);
             }
@@ -692,6 +691,7 @@ namespace WixToolset.VisualStudioExtension
         /// <returns>The color itself</returns>
         internal static Color GetVsColor(Vs2010Color visualStudioColor)
         {
+#if !Dev17 // VS2022 doesn't support theming for legacy property pages
             uint win32Color = 0;
             IVsUIShell2 vsuiShell2 = WixPackage.GetGlobalService(typeof(SVsUIShell)) as IVsUIShell2;
             if (vsuiShell2 != null && vsuiShell2.GetVSSysColorEx((Int32)visualStudioColor, out win32Color) == VSConstants.S_OK)
@@ -699,13 +699,14 @@ namespace WixToolset.VisualStudioExtension
                 Color color = ColorTranslator.FromWin32((int)win32Color);
                 return color;
             }
+#endif
 
             // We need to fall back to some reasonable colors when we're not running in VS
             // to keep the forms/property pages editable in the designers
             switch (visualStudioColor)
             {
                 case Vs2010Color.VSCOLOR_BUTTONFACE:
-                    return SystemColors.ButtonFace;
+                    return SystemColors.Control;
 
                 case Vs2010Color.VSCOLOR_BUTTONTEXT:
                     return SystemColors.ControlText;
