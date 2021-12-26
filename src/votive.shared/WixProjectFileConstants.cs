@@ -17,6 +17,7 @@ namespace WixToolset.VisualStudioExtension
         public const string AllowUnresolvedReferences = "AllowUnresolvedReferences";
         public const string BackwardsCompatibleGuidGeneration = "BackwardsCompatibleGuidGeneration";
         public const string BaseInputPaths = "BaseInputPaths";
+        public const string BindInputPaths = "BindInputPaths";
         public const string CabinetCachePath = "CabinetCachePath";
         public const string CabinetCreationThreadCount = "CabinetCreationThreadCount";
         public const string CompilerAdditionalOptions = "CompilerAdditionalOptions";
@@ -39,6 +40,7 @@ namespace WixToolset.VisualStudioExtension
         public const string LibVerboseOutput = "LibVerboseOutput";
         public const string LinkerAdditionalOptions = "LinkerAdditionalOptions";
         public const string LinkerBaseInputPaths = "LinkerBaseInputPaths";
+        public const string LinkerBindInputPaths = "LinkerBindInputPaths";
         public const string LinkerBindFiles = "LinkerBindFiles";
         public const string LinkerPedantic = "LinkerPedantic";
         public const string LinkerSuppressIntermediateFileVersionMatching = "LinkerSuppressIntermediateFileVersionMatching";

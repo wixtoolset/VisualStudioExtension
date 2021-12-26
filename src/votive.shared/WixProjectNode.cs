@@ -402,6 +402,10 @@ namespace WixToolset.VisualStudioExtension
         {
             return (String.Compare(itemType, WixProjectFileConstants.WixExtension, StringComparison.OrdinalIgnoreCase) == 0) ||
                 (String.Compare(itemType, WixProjectFileConstants.WixLibrary, StringComparison.OrdinalIgnoreCase) == 0) ||
+                (String.Compare(itemType, WixProjectFileConstants.BaseInputPaths, StringComparison.OrdinalIgnoreCase) == 0) ||
+                (String.Compare(itemType, WixProjectFileConstants.BindInputPaths, StringComparison.OrdinalIgnoreCase) == 0) ||
+                (String.Compare(itemType, WixProjectFileConstants.LinkerBaseInputPaths, StringComparison.OrdinalIgnoreCase) == 0) ||
+                (String.Compare(itemType, WixProjectFileConstants.LinkerBindInputPaths, StringComparison.OrdinalIgnoreCase) == 0) ||
                 base.FilterItemTypeToBeAddedToHierarchy(itemType);
         }
 
