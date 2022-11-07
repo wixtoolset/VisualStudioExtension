@@ -53,13 +53,6 @@
       <VSIXSubPath>Schemas</VSIXSubPath>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="..\Schemas\v4\v4schemas.csproj">
-      <Project>{587d2a86-66cf-46b4-98c8-c01e20f1076d}</Project>
-      <Name>v4schemas</Name>
-      <VSIXSubPath>Schemas</VSIXSubPath>
-      <IncludeOutputGroupsInVSIX>GetCopyToOutputDirectoryItems%3bVSIXContainerProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
