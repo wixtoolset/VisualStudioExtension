@@ -8,6 +8,6 @@
     <String Id="Product" Overridable="yes">WiX Toolset Visual Studio Extension</String>
     <String Id="Regid" Overridable="yes">wixtoolset.org</String>
     <String Id="ShortProduct" Overridable="yes">WiX Toolset</String>
-    <String Id="SupportUrl" Overridable="yes">http://wixtoolset.org</String>
-    <String Id="UpdateUrl" Overridable="yes">http://wixtoolset.org/releases/feed/v3.11</String>
+    <String Id="SupportUrl" Overridable="yes">https://wixtoolset.org</String>
+    <String Id="UpdateUrl" Overridable="yes">https://wixtoolset.org/releases/feed/v3.11</String>
 </WixLocalization>

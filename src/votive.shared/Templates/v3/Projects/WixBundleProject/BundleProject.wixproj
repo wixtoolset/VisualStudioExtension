@@ -30,7 +30,7 @@
 	</ItemGroup>
 	<Import Project="$(WixTargetsPath)" Condition=" Exists('$(WixTargetsPath)') " />
 	<Target Name="EnsureWixToolsetInstalled" Condition=" !Exists('$(WixTargetsPath)') ">
-		<Error Text="The WiX Toolset build tools must be installed to build this project. To download the WiX Toolset, see http://wixtoolset.org/releases/" />
+		<Error Text="The WiX Toolset build tools must be installed to build this project. To download the WiX Toolset, see https://wixtoolset.org/releases/v3.11/stable" />
 	</Target>
 	<!--
 	$loc_WIXPROJ_TOMODIFY_LINE1$

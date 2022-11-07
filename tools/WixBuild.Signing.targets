@@ -9,7 +9,7 @@
     <_SigningAppSettingsPath>$(MSBuildThisFileDirectory)appsettings.json</_SigningAppSettingsPath>
     <_SigningFilterNonePath>$(MSBuildThisFileDirectory)signing-filter.none.txt</_SigningFilterNonePath>
     <_SigningName>WiX Toolset</_SigningName>
-    <_SigningUrl>http://wixtoolset.org</_SigningUrl>
+    <_SigningUrl>https://wixtoolset.org</_SigningUrl>
     <AfterBuildDependsOn>$(AfterBuildDependsOn);SignFiles</AfterBuildDependsOn>
   </PropertyGroup>
 
