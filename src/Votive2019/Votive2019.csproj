@@ -39,13 +39,6 @@
       <VSIXSubPath>Schemas</VSIXSubPath>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="..\Schemas\v4\v4schemas.csproj">
-      <Project>{587D2A86-66CF-46B4-98C8-C01E20F1076D}</Project>
-      <Name>v4schemas</Name>
-      <IncludeOutputGroupsInVSIX>GetCopyToOutputDirectoryItems%3bVSIXContainerProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
-      <VSIXSubPath>Schemas</VSIXSubPath>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VSSDK.BuildTools">
