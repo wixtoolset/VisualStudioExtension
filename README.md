@@ -1,15 +1,13 @@
-# WiX Toolset Visual Studio Extension (aka: Votive)
+# WiX v3 - Visual Studio Extension (aka: Votive)
 
-This repository contains the code for the WiX Toolset Visual Studio Extension. To install
+This repository contains the code for the WiX v3 - Visual Studio Extension. To install
 the extension, use the Extension Manager inside Visual Studio or visit the 
 [Visual Studio Marketplace][marketplace].
 
-The following links will take you to more details:
+**Note:** This Visual Studio Extension DOES NOT support WiX v4 based projects. To load
+WiX v4 projects in Visual Studio, install [HeatWave for VS2022][heatwave] (or [for VS2019][heatwave16]).
 
-## [Home page](http://wixtoolset.org/ "WiX Toolset home page")
-## [Releases](http://wixtoolset.org/releases/ "WiX Toolset stable and weekly releases")
-## [Bugs and feature requests](http://wixtoolset.org/issues/ "Files bugs and feature requests for WiX Toolset ")
-## [Manual](http://wixtoolset.org/documentation/manual/ "WiX Toolset manuals and documentation links")
-## [Hacking on WiX](http://wixtoolset.org/development/ "About development on the WiX Toolset")
 
 [marketplace]: https://marketplace.visualstudio.com/search?term=wix%20toolset&target=VS&sortBy=Relevance
+[heatwave]: https://marketplace.visualstudio.com/items?itemName=FireGiant.FireGiantHeatWaveDev17
+[heatwave16]: https://marketplace.visualstudio.com/items?itemName=FireGiant.FireGiantHeatWaveDev16

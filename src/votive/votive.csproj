@@ -17,6 +17,8 @@
     <VsTemplateLanguage>WiX</VsTemplateLanguage>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <Import Project="..\..\tools\WixBuild.csproj.props" />
   <ItemGroup>

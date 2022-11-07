@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Vsix Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
   <Identifier Id="WixToolset.VisualStudioExtension.Dev11">
-    <Name>Wix Toolset Visual Studio 2012 Extension</Name>
+    <Name>WiX v3 - Visual Studio 2012 Extension</Name>
     <Author>WiX Toolset</Author>
     <Version>|Votive2012;GetBuildVersion|</Version>
     <Locale>1033</Locale>
     <InstalledByMsi>false</InstalledByMsi>
-    <Description>Visual Studio integration for the WiX Toolset - the most powerful set of tools available to create your Windows installation experience.</Description>
-    <MoreInfoUrl>http://wixtoolset.org/</MoreInfoUrl>
+    <Description>Visual Studio integration for the WiX v3 Toolset - the most powerful set of tools available to create your Windows installation experience.</Description>
+    <MoreInfoUrl>https://wixtoolset.org/</MoreInfoUrl>
     <Icon>WixLogoDev11.png</Icon>
     <PreviewImage>WixLogoDev11.png</PreviewImage>
     <SupportedProducts>

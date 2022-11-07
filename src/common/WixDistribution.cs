@@ -26,7 +26,7 @@ namespace WixToolset
         /// <summary>
         /// News URL for the distribution.
         /// </summary>
-        public static string NewsUrl = "http://wixtoolset.org/news/";
+        public static string NewsUrl = "https://wixtoolset.org/news/";
 
         /// <summary>
         /// Short product name for the distribution.
@@ -36,12 +36,12 @@ namespace WixToolset
         /// <summary>
         /// Support URL for the distribution.
         /// </summary>
-        public static string SupportUrl = "http://wixtoolset.org/";
+        public static string SupportUrl = "https://wixtoolset.org/";
 
         /// <summary>
         /// Telemetry URL format for the distribution.
         /// </summary>
-        public static string TelemetryUrlFormat = "http://wixtoolset.org/telemetry/v{0}/?r={1}";
+        public static string TelemetryUrlFormat = "https://wixtoolset.org/telemetry/v{0}/?r={1}";
 
         public static string ReplacePlaceholders(string original, Assembly assembly)
         {

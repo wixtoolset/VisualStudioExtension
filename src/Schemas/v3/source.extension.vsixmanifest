@@ -4,7 +4,7 @@
     <Identity Id="WixToolset.VisualStudioExtension.Schemas3" Version="|v3schemas;GetBuildVersion|" Language="en-US" Publisher="WiX Toolset" />
     <DisplayName>WiX Toolset v3 Schemas for Visual Studio</DisplayName>
     <Description>Visual Studio integraion for the WiX Toolset v3 schemas</Description>
-    <MoreInfo>http://wixtoolset.org/</MoreInfo>
+    <MoreInfo>https://wixtoolset.org/</MoreInfo>
     <Icon>WixLogo.png</Icon>
     <PreviewImage>WixLogo.png</PreviewImage>
   </Metadata>
