@@ -1,4 +1,9 @@
-# WiX v3 - Visual Studio Extension (aka: Votive)
+# WiX v3 is out of community support
+
+See https://www.firegiant.com/wixtoolset/ for the latest information about the WiX Toolset.
+
+
+### WiX v3 - Visual Studio Extension (aka: Votive)
 
 This repository contains the code for the WiX v3 - Visual Studio Extension. To install
 the extension, use the Extension Manager inside Visual Studio or visit the 
